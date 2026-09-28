@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Salas de Aguará: cualquiera con el código puede leer y cargar resultados.
+    match /salas/{code} {
+      allow read, write: if code.size() >= 4 && code.size() <= 6;
+      match /{sub}/{id} {
+        allow read, write: if sub in ['partidos', 'fechas'];
+      }
+    }
+    // Todo lo demás, cerrado.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

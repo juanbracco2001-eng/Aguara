@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
+<meta name="theme-color" content="#17130C">
+<meta name="description" content="Aguará: olimpíadas entre amigos. Salas con código, disciplinas a elección y una tabla compartida.">
+<title>Aguará</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@600;700;800;900&family=Jost:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#EFE7D3; --surface:#FFFFFF; --surface-2:#E7DDC2; --surface-3:#DCCFA9;
+  --ink:#17130C; --ink-2:#4B4130; --ink-3:#6A5D44; --line:#D8CBA0;
+  --accent:#D2401F; --accent-2:#F3DCC9; --accent-ink:#FFFFFF;
+  --gold:#A9790A; --silver:#7C8794; --bronze:#9C5B2E;
+  --good:#1E7A44; --bad:#B5311F;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
+  --cat-dep:#1E4FA3; --cat-mesa:#AD7415; --cat-esp:#D2401F; --cat-otro:#17130C;
+  --shadow:0 1px 2px rgba(23,19,12,.08),0 6px 18px rgba(23,19,12,.09);
+  --display:"Anton",Impact,sans-serif;
+  --head:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#16130B; --surface:#221D12; --surface-2:#2C2517; --surface-3:#3A311D;
+    --ink:#F5EEDD; --ink-2:#C7BB9C; --ink-3:#948765; --line:#3C331F;
+    --accent:#F2643F; --accent-2:#3C2318; --accent-ink:#1A0A05;
+    --gold:#D9A824; --silver:#B7C0CF; --bronze:#D58C5B;
+    --good:#43C07A; --bad:#EE6B61;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+    --cat-dep:#4C86E0; --cat-mesa:#E7AC2E; --cat-esp:#F2643F; --cat-otro:#F5EEDD;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#16130B; --surface:#221D12; --surface-2:#2C2517; --surface-3:#3A311D;
+  --ink:#F5EEDD; --ink-2:#C7BB9C; --ink-3:#948765; --line:#3C331F;
+  --accent:#F2643F; --accent-2:#3C2318; --accent-ink:#1A0A05;
+  --gold:#D9A824; --silver:#B7C0CF; --bronze:#D58C5B;
+  --good:#43C07A; --bad:#EE6B61;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+  --cat-dep:#4C86E0; --cat-mesa:#E7AC2E; --cat-esp:#F2643F; --cat-otro:#F5EEDD;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums}
+.app{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:0 110px;min-height:100%}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);padding-block:14px 10px;display:flex;align-items:center;gap:10px}
+.brandmark{border:0;border-radius:11px;width:40px;height:40px;display:grid;place-items:center;flex:none;background:var(--cat-dep);color:var(--accent-ink);padding:8px}
+.brandmark svg{width:100%;height:100%;display:block}
+.brandmark.lg{width:60px;height:60px;border-radius:15px;padding:10px}
+.brandlockup{display:flex;align-items:center;gap:12px;margin-bottom:2px}
+.wordmark{font-family:var(--display);font-size:30px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink);line-height:1}
+.top h1{font-family:var(--head);font-weight:800;font-size:24px;line-height:1;margin:0;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
+.top .grow{flex:1;min-width:0}
+.iconbtn{border:0;background:var(--surface);border-radius:12px;width:40px;height:40px;display:grid;place-items:center;box-shadow:var(--shadow);flex:none}
+.iconbtn svg{width:20px;height:20px}
+.code{display:inline-flex;align-items:center;gap:6px;border:1px dashed var(--ink-3);background:transparent;border-radius:999px;padding:3px 10px;font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:.18em;color:var(--ink-2);margin-top:5px}
+.code small{font-family:var(--body);letter-spacing:0;font-weight:500;font-size:11px;color:var(--ink-3)}
+.catgroup{margin-top:16px}
+.catgroup:first-child{margin-top:0}
+.catlabel{display:flex;align-items:center;gap:8px;font-family:var(--head);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+
+.banner{background:var(--accent-2);border-radius:14px;padding:10px 12px;font-size:13.5px;display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.banner b{font-weight:700}
+.banner .btn{margin-left:auto;flex:none}
+
+/* generic */
+.card{background:var(--surface);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.eyebrow{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0}
+h2{font-family:var(--head);font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.02em;margin:0;line-height:1.05}
+.muted{color:var(--ink-3)}
+.small{font-size:13px}
+.btn{border:0;border-radius:12px;padding:10px 16px;font-weight:700;background:var(--surface-2);color:var(--ink);font-size:14.5px}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;padding-inline:8px;color:var(--ink-2)}
+.btn.block{width:100%;padding-block:13px}
+.btn.danger{background:transparent;color:var(--bad)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.input{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;font-size:15px}
+.input:focus{border-color:var(--accent);outline:none}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--surface-2);border-radius:12px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;border-radius:9px;padding:8px 6px;font-weight:700;font-size:13.5px;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.empty{text-align:center;padding:28px 12px;color:var(--ink-3)}
+
+/* ranking */
+.rank{display:flex;flex-direction:column}
+.rk{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:11px 2px;border-top:1px solid var(--line)}
+.rk:first-child{border-top:0}
+.pos{font-family:var(--head);font-weight:800;font-size:24px;text-align:center;line-height:1;color:var(--ink-3)}
+.pos.p1{color:var(--gold)}.pos.p2{color:var(--silver)}.pos.p3{color:var(--bronze)}
+.who{display:flex;flex-direction:column;min-width:0}
+.who .nm{font-weight:700;font-size:16px;display:flex;align-items:center;gap:8px;min-width:0}
+.who .nm span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meta{font-size:12.5px;color:var(--ink-3);display:flex;gap:10px;flex-wrap:wrap}
+.pts{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;text-align:right}
+.pts small{display:block;font-family:var(--body);font-size:11px;font-weight:600;color:var(--ink-3);letter-spacing:.04em}
+.form{display:flex;gap:3px;margin-top:3px}
+.form i{width:14px;height:5px;border-radius:3px;background:var(--surface-3)}
+.form i.w{background:var(--good)}
+.form i.p{background:var(--gold)}
+
+/* hero leader */
+.lead{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:end;background:var(--ink);color:var(--surface);border-radius:20px;padding:18px;position:relative;overflow:hidden}
+.lead::after{content:"";position:absolute;right:-30px;top:-30px;width:170px;height:170px;border-radius:50%;border:14px solid var(--accent);opacity:.9}
+.lead>*{position:relative;z-index:1}
+.lead .l1{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+.lead .l2{font-family:var(--display);font-weight:800;font-size:40px;line-height:.95;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis}
+.lead .l3{font-size:13px;opacity:.75;grid-column:1/-1}
+.lead .big{font-family:var(--display);font-weight:800;font-size:56px;line-height:.85;position:relative;z-index:1;text-align:right}
+.lead .big small{display:block;font-family:var(--body);font-size:13px;letter-spacing:.14em;opacity:.7}
+.progress{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.progress b{display:block;height:100%;background:var(--accent);border-radius:99px}
+
+/* chart */
+.chartwrap{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--body);font-size:11px;fill:var(--ink-3)}
+.chart .lbl{font-weight:700;fill:var(--ink);font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--ink-2);margin-bottom:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:12px;padding:8px 10px;font-size:12.5px;min-width:150px;z-index:5}
+.tip .th{font-weight:700;margin-bottom:4px;font-size:12px;color:var(--ink-2)}
+.tip .tr{display:flex;align-items:center;gap:6px;justify-content:space-between}
+.tip .tr span{display:flex;align-items:center;gap:6px}
+
+/* stats grid */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tile{background:var(--surface-2);border-radius:14px;padding:12px}
+.tile .k{font-size:12px;color:var(--ink-3);font-weight:600}
+.tile .v{font-family:var(--head);font-weight:800;font-size:22px;line-height:1.1;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile .s{font-size:12px;color:var(--ink-2)}
+.scroll-x{overflow-x:auto;margin-inline:-4px;padding-inline:4px}
+table.heat{border-collapse:separate;border-spacing:3px;font-size:12.5px;min-width:100%}
+table.heat th{font-weight:600;color:var(--ink-3);text-align:left;padding:4px 6px;white-space:nowrap}
+table.heat th.pl{text-align:center}
+table.heat td{text-align:center;border-radius:7px;padding:7px 4px;min-width:42px;font-weight:700}
+table.heat td.dn{text-align:left;font-weight:600;white-space:nowrap;padding-inline:6px;color:var(--ink-2)}
+
+/* partidos */
+.match{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.match:first-child{border-top:0}
+.mdate{font-family:var(--head);text-align:center;width:44px;line-height:1}
+.mdate b{display:block;font-size:24px;font-weight:800}
+.mdate span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.mbody .mt{font-weight:700;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 6px;background:var(--surface-2);color:var(--ink-2)}
+.res{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:5px;font-size:13.5px}
+.res span{display:inline-flex;align-items:center;gap:5px}
+.res .pp{font-weight:700;font-variant-numeric:tabular-nums}
+.res .z{color:var(--ink-3)}
+
+/* fechas */
+.next{background:var(--accent);color:var(--accent-ink);border-radius:20px;padding:18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.next .dd{font-family:var(--head);text-align:center;line-height:.9;border-right:2px solid currentColor;padding-right:16px}
+  .next .dd b{font-size:52px;font-weight:800;display:block;font-family:var(--display)}
+.next .dd span{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.next h3{margin:0;font-family:var(--head);font-weight:800;font-size:24px;text-transform:uppercase;line-height:1}
+.next p{margin:4px 0 0;font-size:13.5px;opacity:.9}
+.fecha{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.fecha:first-child{border-top:0}
+
+/* disciplinas */
+.disc{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.disc:first-child{border-top:0}
+.disc .dn{font-weight:700}
+.status{font-size:11.5px;font-weight:700;border-radius:99px;padding:3px 9px}
+.status.done{background:color-mix(in oklab,var(--good) 18%,var(--surface));color:var(--good)}
+.status.todo{background:var(--surface-2);color:var(--ink-3)}
+.cats{display:flex;flex-direction:column;gap:12px}
+.cats .row{gap:6px}
+
+/* tanteador */
+.score{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.team{background:var(--surface);border-radius:18px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.team input{border:0;background:transparent;font-family:var(--head);font-weight:800;font-size:20px;text-transform:uppercase;text-align:center;width:100%;padding:2px}
+.team .tv{font-family:var(--display);font-weight:800;font-size:64px;line-height:.9;text-align:center}
+.team .tv small{display:block;font-family:var(--body);font-size:13px;letter-spacing:.14em;color:var(--ink-3);font-weight:700}
+.team.win{outline:3px solid var(--good)}
+.team .ctrl{display:grid;grid-template-columns:1fr 2fr;gap:6px}
+.team .ctrl .btn{font-size:22px;padding:10px 0}
+.fosforos{display:flex;flex-direction:column;gap:6px;align-items:center;min-height:120px}
+.fosforos .half{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;width:100%}
+.fosforos .sep{width:70%;border-top:1.5px dashed var(--line);margin:2px 0}
+.fosforos svg{width:36px;height:36px}
+.fosforos line{stroke:var(--ink);stroke-width:3.2;stroke-linecap:round}
+.fosforos circle{fill:var(--accent)}
+.counters{display:flex;flex-direction:column}
+.ctr{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.ctr:first-child{border-top:0}
+.ctr .v{font-family:var(--display);font-weight:800;font-size:28px;min-width:46px;text-align:center}
+.ctr .btn{width:44px;height:44px;padding:0;font-size:20px}
+
+/* tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-block:6px calc(6px + env(safe-area-inset-bottom,0px));padding-inline:8px}
+.tabs .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tabs button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.02em}
+.tabs button svg{width:22px;height:22px}
+.tabicon{position:relative;display:inline-flex}
+.tabdot{position:absolute;top:-2px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
+.tabs button[aria-current="page"]{color:var(--accent)}
+.fab{position:fixed;right:max(16px,calc(50% - 304px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:31;border:0;border-radius:18px;background:var(--accent);color:var(--accent-ink);font-weight:800;padding:14px 18px;box-shadow:0 8px 24px color-mix(in oklab,var(--accent) 40%,transparent);display:flex;gap:8px;align-items:center;font-size:15px}
+.fab svg{width:20px;height:20px}
+
+/* sheet */
+.veil{position:fixed;inset:0;background:rgba(8,12,22,.5);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);width:100%;max-width:640px;max-height:92%;overflow:auto;border-radius:22px 22px 0 0;padding-inline:16px;padding-block:14px calc(20px + env(safe-area-inset-bottom,0px))}
+.sheet .grab{width:44px;height:5px;border-radius:9px;background:var(--surface-3);margin:0 auto 10px}
+.sheet header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.order{display:flex;flex-direction:column;gap:6px}
+.order button{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 10px;text-align:left;font-weight:600}
+.order button .pos{font-size:20px}
+.teamsel{display:flex;flex-direction:column;gap:6px}
+.teamsel .tr{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;background:var(--surface);border-radius:12px;padding:6px 6px 6px 12px}
+.teamsel .seg{min-width:170px}
+.preview{background:var(--surface-2);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:10px 16px;border-radius:12px;font-weight:600;z-index:60;font-size:14px;max-width:calc(100% - 32px)}
+.home-hero{padding-block:22px 6px}
+.home-hero h1{font-family:var(--display);font-weight:800;font-size:52px;line-height:.88;text-transform:uppercase;margin:10px 0 10px;letter-spacing:.005em}
+.home-hero h1 em{font-style:normal;color:var(--accent)}
+.home-hero p{margin:0;color:var(--ink-2);max-width:40ch}
+.salacard{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;border:0;background:var(--surface);border-radius:14px;padding:12px 14px;text-align:left;box-shadow:var(--shadow);width:100%}
+.salacard b{display:block;font-size:15.5px}
+.confirm{background:color-mix(in oklab,var(--bad) 12%,var(--surface));border-radius:12px;padding:10px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13.5px}
+@media (prefers-reduced-motion:no-preference){
+  .sheet{animation:up .22s ease-out}
+  @keyframes up{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
+}
+@media (min-width:520px){ .tiles{grid-template-columns:repeat(4,1fr)} }
+</style>
+</head>
+<body>
+
+
+<div class="app" id="app"></div>
+<nav class="tabs" id="tabs" hidden></nav>
+<div id="layer"></div>
+
+<script>
+(() => {
+/* ============ datos base ============ */
+const CATS = { dep: "Deporte", mesa: "Mesa y cartas", esp: "eSports", otro: "Otros" };
+const CATALOGO = [
+  ["Fútbol tenis","dep"],["Penales","dep"],["Básquet 1 vs 1","dep"],["Tiros libres","dep"],["Ping-pong","dep"],["Pádel","dep"],["Tenis","dep"],["Vóley","dep"],["Carrera 100 m","dep"],["Bochas","dep"],["Tejo","dep"],
+  ["Truco","mesa"],["Chinchón","mesa"],["Generala","mesa"],["Burako","mesa"],["Póker","mesa"],["UNO","mesa"],["Ajedrez","mesa"],["Metegol","mesa"],["Pool","mesa"],["Dardos","mesa"],["Sapo","mesa"],
+  ["Counter-Strike 2","esp"],["EA FC","esp"],["Rocket League","esp"],["Mario Kart","esp"],["Fortnite","esp"],["Valorant","esp"],
+  ["Bowling","otro"],["Karting","otro"],["Trivia","otro"],["Pesca","otro"]
+];
+const MAX_JUG = 8;
+const DEF_PUNTAJE = { podio: [3, 2, 1], ganador: 3, empate: 1 };
+const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const DEMO = "DEMO";
+
+const uid = () => Math.random().toString(36).slice(2, 10);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const hoyISO = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+const addDays = (iso, n) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0,10); };
+const MES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const DIA = ["dom","lun","mar","mié","jue","vie","sáb"];
+const fD = iso => { const d = new Date(iso + "T12:00:00"); return { d: d.getDate(), m: MES[d.getMonth()], w: DIA[d.getDay()] }; };
+const fCorta = iso => { const x = fD(iso); return `${x.d} ${x.m}`; };
+const diasHasta = iso => Math.round((new Date(iso + "T12:00:00") - new Date(hoyISO() + "T12:00:00")) / 864e5);
+const colorOf = i => `var(--s${(i % 8) + 1})`;
+const lsGet = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+
+/* ============ sala de ejemplo ============ */
+function demoData() {
+  const J = ["Juan","Tomi","Lucho","Fede","Maxi"].map((n, i) => ({ id: "j" + i, nombre: n }));
+  const Dn = [["Truco","mesa"],["Ping-pong","dep"],["Básquet 1 vs 1","dep"],["Counter-Strike 2","esp"],["Metegol","mesa"],["Penales","dep"],["Chinchón","mesa"],["EA FC","esp"],["Pádel","dep"],["Carrera 100 m","dep"]];
+  const D = Dn.map(([n, c], i) => ({ id: "d" + i, nombre: n, cat: c }));
+  const h = hoyISO();
+  const P = [];
+  const pod = (disc, dd, orden, extra = []) => {
+    const pts = {}; [...orden, ...extra].forEach(id => pts[id] = 0);
+    orden.forEach((id, i) => pts[id] = DEF_PUNTAJE.podio[i] ?? 0);
+    P.push({ id: uid(), disc, fecha: addDays(h, dd), tipo: "podio", jugadores: [...orden, ...extra], orden, pts, creado: P.length });
+  };
+  const eq = (disc, dd, A, B, gana) => {
+    const pts = {}; [...A, ...B].forEach(id => pts[id] = 0);
+    if (gana === "E") [...A, ...B].forEach(id => pts[id] = DEF_PUNTAJE.empate);
+    else (gana === "A" ? A : B).forEach(id => pts[id] = DEF_PUNTAJE.ganador);
+    P.push({ id: uid(), disc, fecha: addDays(h, dd), tipo: "equipos", jugadores: [...A, ...B], equipos: { A, B }, gana, pts, creado: P.length });
+  };
+  eq("d0", -24, ["j0","j1"], ["j2","j3"], "A");
+  pod("d1", -24, ["j3","j0","j4"], ["j1","j2"]);
+  eq("d2", -17, ["j2","j4"], ["j0","j3"], "A");
+  pod("d3", -17, ["j1","j2","j0"], ["j3","j4"]);
+  eq("d4", -10, ["j0","j4"], ["j1","j3"], "B");
+  pod("d5", -10, ["j0","j3","j2"], ["j1","j4"]);
+  eq("d0", -3, ["j3","j4"], ["j0","j2"], "B");
+  pod("d6", -3, ["j4","j0","j1"], ["j2","j3"]);
+  eq("d7", -1, ["j1"], ["j3"], "A");
+  const F = [
+    { id: uid(), fecha: addDays(h, 3), hora: "20:30", lugar: "Casa de Fede (tiene mesa de ping-pong)", discs: ["d8","d9"], nota: "Llevar paletas" },
+    { id: uid(), fecha: addDays(h, 10), hora: "18:00", lugar: "Club del barrio", discs: ["d2","d5"], nota: "" }
+  ];
+  return {
+    sala: { nombre: "Olimpíadas del Barrio", creada: Date.now(), jugadores: J, disciplinas: D, puntaje: DEF_PUNTAJE },
+    partidos: Object.fromEntries(P.map(p => [p.id, p])),
+    fechas: Object.fromEntries(F.map(f => [f.id, f]))
+  };
+}
+
+/* ============ almacenamiento ============ */
+// Firebase: cuando la app vive en su propio sitio. null = usar la base de Claude.
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCqmACxnMdW4_uRazeN09gO9oBM5NFLhTA",
+  authDomain: "aguara-26448.firebaseapp.com",
+  projectId: "aguara-26448",
+  storageBucket: "aguara-26448.firebasestorage.app",
+  messagingSenderId: "360605797164",
+  appId: "1:360605797164:web:c0c7d4618a760d028f7a89"
+};
+const FB_VER = "10.14.1";
+
+// Envuelve Firestore con la misma forma que usa el resto de la app
+async function firebaseDB(cfg) {
+  const base = `https://www.gstatic.com/firebasejs/${FB_VER}/`;
+  const { initializeApp } = await import(base + "firebase-app.js");
+  const F = await import(base + "firebase-firestore.js");
+  const fs = F.getFirestore(initializeApp(cfg));
+  const snapDoc = s => ({ id: s.id, exists: s.exists(), data: () => s.data() });
+  const wrapErr = fn => e => fn && fn({ code: e && e.code === "permission-denied" ? "invalid_argument" : "unavailable", message: String(e && e.message) });
+  const rethrow = async pr => { try { return await pr; } catch (e) { throw { code: e && e.code === "permission-denied" ? "invalid_argument" : (e && e.code === "resource-exhausted" ? "quota_exceeded" : "unavailable"), message: String(e && e.message) }; } };
+  return {
+    doc(path) {
+      const r = F.doc(fs, path);
+      return {
+        get: async () => snapDoc(await rethrow(F.getDoc(r))),
+        set: data => rethrow(F.setDoc(r, data)),
+        delete: () => rethrow(F.deleteDoc(r)),
+        onSnapshot: (next, err) => F.onSnapshot(r, s => next(snapDoc(s)), wrapErr(err))
+      };
+    },
+    collection(path) {
+      const r = F.collection(fs, path);
+      return {
+        onSnapshot: (next, err) => F.onSnapshot(r, q => next({ docs: q.docs.map(snapDoc), size: q.size, empty: q.empty }), wrapErr(err))
+      };
+    }
+  };
+}
+
+let DB = null, dbReady = false;
+const dbPromise = (async () => {
+  try {
+    if (FIREBASE_CONFIG) DB = await firebaseDB(FIREBASE_CONFIG);
+    else DB = window.claude && window.claude.use ? await window.claude.use("db") : null;
+  } catch (e) { console.warn("Sin base de datos:", e); DB = null; }
+  dbReady = true; return DB;
+})();
+
+// Salas locales (sin conexión) + la de ejemplo, en memoria con copia en este navegador
+const LOCAL = lsGet("oea_local", {});
+const demo = demoData();
+const localListeners = {};
+const saveLocal = () => { const copy = { ...LOCAL }; delete copy[DEMO]; lsSet("oea_local", copy); };
+LOCAL[DEMO] = demo;
+const emitLocal = code => (localListeners[code] || []).forEach(fn => fn());
+const isLocal = code => code === DEMO || !!LOCAL[code];
+
+const backend = {
+  async exists(code) {
+    if (isLocal(code)) return true;
+    const db = await dbPromise; if (!db) return false;
+    const s = await db.doc("salas/" + code).get(); return s.exists;
+  },
+  async getSala(code) {
+    if (isLocal(code)) return LOCAL[code] ? LOCAL[code].sala : null;
+    const db = await dbPromise; if (!db) return null;
+    const snap = await db.doc("salas/" + code).get();
+    return snap.exists ? snap.data() : null;
+  },
+  watch(code, cb) {
+    if (isLocal(code)) {
+      const fn = () => { const L = LOCAL[code]; cb({ sala: L.sala, partidos: Object.values(L.partidos || {}), fechas: Object.values(L.fechas || {}) }); };
+      (localListeners[code] ||= []).push(fn); fn();
+      return () => { localListeners[code] = (localListeners[code] || []).filter(f => f !== fn); };
+    }
+    const cur = { sala: null, partidos: [], fechas: [] }; let got = 0;
+    const push = () => { if (cur.sala) cb({ ...cur }); };
+    const onErr = e => toast(e && e.code === "revoked" ? "Perdiste acceso a esta sala" : "Problema de conexión, reintentando…");
+    const u1 = DB.doc("salas/" + code).onSnapshot(s => { cur.sala = s.exists ? s.data() : null; if (!s.exists) cb({ missing: true }); else push(); }, onErr);
+    const u2 = DB.collection("salas/" + code + "/partidos").onSnapshot(q => { cur.partidos = q.docs.map(d => ({ id: d.id, ...d.data() })); push(); }, onErr);
+    const u3 = DB.collection("salas/" + code + "/fechas").onSnapshot(q => { cur.fechas = q.docs.map(d => ({ id: d.id, ...d.data() })); push(); }, onErr);
+    return () => { u1(); u2(); u3(); };
+  },
+  async saveSala(code, sala) {
+    if (isLocal(code)) { LOCAL[code].sala = sala; saveLocal(); emitLocal(code); return; }
+    await DB.doc("salas/" + code).set(sala);
+  },
+  async put(code, col, obj) {
+    const { id, ...rest } = obj;
+    if (isLocal(code)) { (LOCAL[code][col] ||= {})[id] = obj; saveLocal(); emitLocal(code); return; }
+    await DB.doc(`salas/${code}/${col}/${id}`).set(rest);
+  },
+  async del(code, col, id) {
+    if (isLocal(code)) { delete LOCAL[code][col][id]; saveLocal(); emitLocal(code); return; }
+    await DB.doc(`salas/${code}/${col}/${id}`).delete();
+  },
+  async create(sala) {
+    const db = await dbPromise;
+    for (let t = 0; t < 6; t++) {
+      let code = ""; for (let i = 0; i < 5; i++) code += CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+      if (db) {
+        const s = await db.doc("salas/" + code).get();
+        if (s.exists) continue;
+        await db.doc("salas/" + code).set(sala); return code;
+      } else {
+        if (LOCAL[code]) continue;
+        LOCAL[code] = { sala, partidos: {}, fechas: {} }; saveLocal(); return code;
+      }
+    }
+    throw new Error("sin código");
+  }
+};
+const writeErr = e => {
+  if (e && (e.code === "invalid_argument" || e.code === "permission-denied")) toast("No tenés permiso para editar esta sala");
+  else if (e && e.code === "quota_exceeded") toast("La sala llegó a su límite de datos");
+  else toast("No se pudo guardar. Probá de nuevo.");
+};
+
+/* ============ estado ============ */
+const S = {
+  view: "home", code: null, data: null, tab: lsGet("oea_tab", "tabla"), unsub: null,
+  recientes: lsGet("oea_recientes", []),
+  tant: lsGet("oea_tant", { modo: "truco", a: 0, b: 0, max: 30, na: "Nosotros", nb: "Ellos", libre: {} })
+};
+const app = document.getElementById("app");
+const tabsEl = document.getElementById("tabs");
+const layer = document.getElementById("layer");
+
+function toast(msg) {
+  const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; t.setAttribute("role", "status");
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2600);
+}
+
+function abrirSala(code) {
+  if (S.unsub) S.unsub();
+  S.view = "sala"; S.code = code; S.data = null;
+  if (code !== DEMO) {
+    S.recientes = [code, ...S.recientes.filter(c => c !== code)].slice(0, 8);
+    lsSet("oea_recientes", S.recientes);
+  }
+  lsSet("oea_ultima", code);
+  render();
+  S.unsub = backend.watch(code, d => {
+    if (d.missing) { toast("Esa sala ya no existe"); irHome(); return; }
+    S.data = d;
+    const nm = d.sala.nombre; const r = lsGet("oea_nombres", {}); r[code] = nm; lsSet("oea_nombres", r);
+    if (!layer.firstChild) render(); else renderQuiet();
+  });
+}
+function irHome() { if (S.unsub) S.unsub(); S.unsub = null; S.view = "home"; S.code = null; S.data = null; lsSet("oea_ultima", ""); render(); }
+let pendingRender = false;
+function renderQuiet() { pendingRender = true; }
+
+/* ============ cálculos ============ */
+function calc(d) {
+  const J = d.sala.jugadores, Dm = Object.fromEntries(d.sala.disciplinas.map(x => [x.id, x]));
+  const P = [...d.partidos].sort((a, b) => a.fecha.localeCompare(b.fecha) || (a.creado || 0) - (b.creado || 0));
+  const st = Object.fromEntries(J.map(j => [j.id, { id: j.id, pts: 0, pj: 0, gan: 0, pod: 0, form: [], porDisc: {}, racha: 0 }]));
+  const serie = Object.fromEntries(J.map(j => [j.id, [0]]));
+  const ganadores = p => {
+    if (p.tipo === "podio") return p.orden && p.orden[0] ? [p.orden[0]] : [];
+    if (p.tipo === "equipos") return p.gana === "E" ? [] : (p.equipos[p.gana] || []);
+    const vals = Object.values(p.pts); const mx = Math.max(...vals);
+    return mx > 0 ? Object.keys(p.pts).filter(k => p.pts[k] === mx) : [];
+  };
+  P.forEach(p => {
+    const g = ganadores(p);
+    (p.jugadores || []).forEach(id => {
+      const s = st[id]; if (!s) return;
+      const v = +p.pts[id] || 0;
+      s.pts += v; s.pj++; s.porDisc[p.disc] = (s.porDisc[p.disc] || 0) + v;
+      const w = g.includes(id);
+      const podio = w || (p.tipo === "podio" && p.orden.indexOf(id) > -1 && p.orden.indexOf(id) < 3);
+      if (w) s.gan++; if (podio) s.pod++;
+      s.form.push(w ? "w" : podio ? "p" : "");
+      s.racha = w ? s.racha + 1 : 0;
+    });
+    J.forEach(j => { const arr = serie[j.id]; arr.push(arr[arr.length - 1] + (+p.pts[j.id] || 0)); });
+  });
+  const tabla = J.map((j, i) => ({ ...st[j.id], nombre: j.nombre, idx: i }))
+    .sort((a, b) => b.pts - a.pts || b.gan - a.gan || a.pj - b.pj);
+  let pos = 0; tabla.forEach((r, i) => { if (i === 0 || r.pts !== tabla[i - 1].pts || r.gan !== tabla[i - 1].gan) pos = i + 1; r.pos = pos; });
+  const jugadas = new Set(P.map(p => p.disc));
+  const conteo = {}; P.forEach(p => conteo[p.disc] = (conteo[p.disc] || 0) + 1);
+  return { P, tabla, serie, Dm, jugadas, conteo, ganadores };
+}
+
+/* ============ marca ============ */
+const WOLF = '<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><polygon points="13,3 18,19 24,15 30,19 35,3 44,23 37,37 24,47 11,37 4,23" fill="currentColor"/></svg>';
+
+/* ============ íconos ============ */
+const I = {
+  tabla: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>',
+  partidos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
+  fechas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+  disciplinas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c3 3 3 14 0 17M12 3.5c-3 3-3 14 0 17"/></svg>',
+  tanteador: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 20 20 4"/></svg>',
+  plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+  gear: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
+};
+const TABS = [["tabla","Tabla"],["partidos","Partidos"],["fechas","Fechas"],["disciplinas","Disciplinas"],["tanteador","Tanteador"]];
+
+/* ============ render ============ */
+function render() {
+  pendingRender = false;
+  if (S.view === "home") { tabsEl.hidden = true; app.innerHTML = vHome(); bindHome(); removeFab(); return; }
+  if (!S.data) { tabsEl.hidden = true; removeFab(); app.innerHTML = `<header class="top"><button class="iconbtn" data-a="home" aria-label="Volver">${I.back}</button><div class="grow"><h1>Cargando…</h1></div></header>`; return; }
+  const C = calc(S.data);
+  const proxF = [...S.data.fechas].sort((a, b) => a.fecha.localeCompare(b.fecha)).find(f => diasHasta(f.fecha) >= 0);
+  const showDot = proxF && diasHasta(proxF.fecha) <= 1;
+  tabsEl.hidden = false;
+  tabsEl.innerHTML = `<div class="in">${TABS.map(([k, l]) => `<button data-tab="${k}" ${S.tab === k ? 'aria-current="page"' : ""}><span class="tabicon">${I[k]}${k === "fechas" && showDot ? '<i class="tabdot"></i>' : ""}</span><span>${l}</span></button>`).join("")}</div>`;
+  const body = { tabla: vTabla, partidos: vPartidos, fechas: vFechas, disciplinas: vDisciplinas, tanteador: vTanteador }[S.tab](C);
+  app.innerHTML = vHeader() + (S.code === DEMO ? `<div class="banner"><div><b>Sala de ejemplo.</b> Probá todo acá; los cambios no se guardan para otros.</div><button class="btn primary" data-a="home">Crear la mía</button></div>` : "") + body;
+  if (S.tab === "tabla") drawChart(C);
+  if (S.tab === "tabla" || S.tab === "partidos") showFab(); else removeFab();
+}
+function vHeader() {
+  const s = S.data.sala;
+  return `<header class="top">
+    <button class="brandmark" data-a="home" aria-label="Mis salas">${WOLF}</button>
+    <div class="grow"><h1>${esc(s.nombre)}</h1>
+      ${S.code === DEMO ? `<span class="code">DEMO <small>ejemplo</small></span>` : `<button class="code" data-a="copiar" aria-label="Copiar código">${esc(S.code)} <small>${isLocal(S.code) ? "solo este equipo" : "tocar para copiar"}</small></button>`}
+    </div>
+    <button class="iconbtn" data-a="ajustes" aria-label="Ajustes de la sala">${I.gear}</button>
+  </header>`;
+}
+function showFab() {
+  if (document.getElementById("fab")) return;
+  const b = document.createElement("button"); b.className = "fab"; b.id = "fab"; b.innerHTML = I.plus + "Cargar resultado";
+  b.onclick = () => sheetResultado(); document.body.appendChild(b);
+}
+function removeFab() { const f = document.getElementById("fab"); if (f) f.remove(); }
+
+/* ---------- HOME ---------- */
+function vHome() {
+  const nombres = lsGet("oea_nombres", {});
+  const mias = S.recientes.map(c => `<button class="salacard" data-open="${esc(c)}"><span><b>${esc(nombres[c] || "Sala")}</b><span class="muted small">Código ${esc(c)}${LOCAL[c] ? " · solo en este equipo" : ""}</span></span>${I.back.replace("M15 5l-7 7 7 7", "M9 5l7 7-7 7")}</button>`).join("");
+  return `<div class="home-hero">
+      <div class="brandlockup"><div class="brandmark lg">${WOLF}</div><span class="wordmark">Aguará</span></div>
+      <h1>Las disciplinas<br>que elijan.<br>Una <em>tabla</em>.</h1>
+      <p>Abrí una sala, pasale el código a tu grupo y sumen puntos en truco, ping-pong, Counter o lo que se les ocurra, fecha a fecha. Deporte, juegos y eSports, cada uno con su color.</p>
+    </div>
+    <div class="stack" style="margin-top:18px">
+      <section class="card stack">
+        <h2>Crear sala</h2>
+        <div class="field"><label for="h-nombre">Nombre de la sala</label><input class="input" id="h-nombre" maxlength="40" placeholder="Ej: Olimpíadas del Barrio"></div>
+        <div class="field"><label for="h-yo">Tu nombre</label><input class="input" id="h-yo" maxlength="16" placeholder="Ej: Juan"></div>
+        <button class="btn primary block" id="h-crear">Crear sala</button>
+        <p class="muted small" style="margin:0">Después les pasás el código a tus amigos y cada uno entra con su propio nombre.</p>
+        <p class="muted small" id="h-modo" style="margin:0"></p>
+      </section>
+      <section class="card stack">
+        <h2>Entrar con código</h2>
+        <div class="row" style="flex-wrap:nowrap"><input class="input" id="h-code" maxlength="6" placeholder="ABC12" style="text-transform:uppercase;letter-spacing:.2em;font-weight:700" autocomplete="off"><button class="btn primary" id="h-entrar">Entrar</button></div>
+      </section>
+      ${mias ? `<section class="stack"><p class="eyebrow">Mis salas</p>${mias}</section>` : ""}
+      <section class="stack"><p class="eyebrow">Para probar</p>
+        <button class="salacard" data-open="${DEMO}"><span><b>Olimpíadas del Barrio</b><span class="muted small">Sala de ejemplo con 9 partidos cargados</span></span>${I.back.replace("M15 5l-7 7 7 7", "M9 5l7 7-7 7")}</button>
+      </section>
+    </div>`;
+}
+function bindHome() {
+  const modo = document.getElementById("h-modo");
+  const setModo = () => { modo.textContent = !dbReady ? "Conectando…" : DB ? "La sala se guarda en la nube y se sincroniza entre tus dispositivos." : "Sin conexión a la nube: la sala queda guardada solo en este dispositivo."; };
+  setModo(); dbPromise.then(setModo);
+  document.getElementById("h-crear").onclick = async e => {
+    const nombre = document.getElementById("h-nombre").value.trim() || "Mi olimpíada";
+    const miNombre = document.getElementById("h-yo").value.trim();
+    if (!miNombre) { toast("Poné tu nombre para crear la sala"); return; }
+    e.target.disabled = true; e.target.textContent = "Creando…";
+    try {
+      const yo = { id: uid(), nombre: miNombre };
+      const code = await backend.create({ nombre, creada: Date.now(), jugadores: [yo], disciplinas: [], puntaje: DEF_PUNTAJE });
+      lsSet("oea_yo_" + code, yo.id);
+      S.tab = "disciplinas"; abrirSala(code); toast("Sala creada · código " + code);
+    } catch (err) { writeErr(err); e.target.disabled = false; e.target.textContent = "Crear sala"; }
+  };
+  const entrar = async () => {
+    const code = document.getElementById("h-code").value.trim().toUpperCase();
+    if (!code) return;
+    if (code === DEMO) { abrirSala(DEMO); return; }
+    const yaSoy = lsGet("oea_yo_" + code, null);
+    try {
+      const sala = await backend.getSala(code);
+      if (!sala) { toast("No encontramos una sala con ese código"); return; }
+      if (yaSoy && sala.jugadores.some(j => j.id === yaSoy)) { S.tab = "tabla"; abrirSala(code); return; }
+      sheetUnirse(code, sala);
+    } catch { toast("No se pudo buscar la sala. Probá de nuevo."); }
+  };
+  document.getElementById("h-entrar").onclick = entrar;
+  document.getElementById("h-code").onkeydown = e => { if (e.key === "Enter") entrar(); };
+}
+
+/* ---------- TABLA ---------- */
+function vTabla(C) {
+  const s = S.data.sala, t = C.tabla;
+  if (!C.P.length) return `<div class="card empty"><h2 style="color:var(--ink)">Todavía no hay puntos</h2><p>Cargá el primer resultado con el botón de abajo y la tabla se arma sola.</p></div>`;
+  const L = t[0];
+  const empLider = t.filter(r => r.pos === 1).length > 1;
+  const total = s.disciplinas.length, hechas = [...C.jugadas].length;
+  const rows = t.map(r => `<div class="rk">
+      <div class="pos p${r.pos}">${r.pos}</div>
+      <div class="who"><div class="nm"><i class="dot" style="background:${colorOf(r.idx)}"></i><span>${esc(r.nombre)}</span></div>
+        <div class="meta num"><span>${r.pj} PJ</span><span>${r.gan} G</span><span>${r.pod} podios</span>${r.racha >= 2 ? `<span style="color:var(--good);font-weight:700">racha ${r.racha}</span>` : ""}</div>
+        <div class="form" aria-label="Últimos resultados">${r.form.slice(-6).map(f => `<i class="${f}"></i>`).join("")}</div></div>
+      <div class="pts num">${r.pts}<small>PTS</small></div></div>`).join("");
+  return `<div class="stack">
+    <div class="lead">
+      <div><div class="l1">${empLider ? "Punteros empatados" : "Va primero"}</div><div class="l2">${esc(empLider ? t.filter(r => r.pos === 1).map(r => r.nombre).join(" / ") : L.nombre)}</div></div>
+      <div class="big num">${L.pts}<small>PUNTOS</small></div>
+      <div class="l3">${t[1] && !empLider ? `${L.pts - t[1].pts} de ventaja sobre ${esc(t[1].nombre)} · ` : ""}${C.P.length} partidos jugados</div>
+    </div>
+    <section class="card">
+      <div class="row" style="justify-content:space-between;margin-bottom:8px"><h2>Tabla general</h2>${total ? `<span class="muted small num">${hechas}/${total} disciplinas jugadas</span>` : ""}</div>
+      ${total ? `<div class="progress" style="margin-bottom:6px"><b style="width:${Math.min(100, hechas / total * 100)}%"></b></div>` : ""}
+      <div class="rank">${rows}</div>
+      <p class="muted small" style="margin:10px 0 0">Barritas: <span style="color:var(--good);font-weight:700">verde</span> ganó · <span style="color:var(--gold);font-weight:700">dorado</span> podio · gris sin puntos. Últimos 6 partidos.</p>
+    </section>
+    <section class="card">
+      <h2 style="margin-bottom:4px">Evolución</h2>
+      <p class="muted small" style="margin:0 0 10px">Puntos acumulados partido a partido. Tocá el gráfico para ver cada momento.</p>
+      <div class="legend">${S.data.sala.jugadores.map((j, i) => `<span><i style="background:${colorOf(i)}"></i>${esc(j.nombre)}</span>`).join("")}</div>
+      <div class="chartwrap"><div class="chart" id="chart"></div><div class="tip" id="tip" hidden></div></div>
+    </section>
+    ${vStats(C)}
+  </div>`;
+}
+function vStats(C) {
+  const J = S.data.sala.jugadores, t = C.tabla;
+  const masGan = [...t].sort((a, b) => b.gan - a.gan)[0];
+  const efic = [...t].filter(r => r.pj).sort((a, b) => b.pts / b.pj - a.pts / a.pj)[0];
+  const racha = [...t].sort((a, b) => b.racha - a.racha)[0];
+  const discTop = Object.entries(C.conteo).sort((a, b) => b[1] - a[1])[0];
+  const discsJug = S.data.sala.disciplinas.filter(d => C.jugadas.has(d.id));
+  let maxCell = 1; discsJug.forEach(d => J.forEach(j => { const v = t.find(r => r.id === j.id).porDisc[d.id] || 0; if (v > maxCell) maxCell = v; }));
+  const heat = discsJug.length ? `<div class="scroll-x"><table class="heat num"><thead><tr><th></th>${J.map((j, i) => `<th class="pl"><i class="dot" style="background:${colorOf(i)}"></i><br>${esc(j.nombre)}</th>`).join("")}</tr></thead><tbody>
+    ${discsJug.map(d => `<tr><td class="dn">${esc(d.nombre)}</td>${J.map(j => { const v = t.find(r => r.id === j.id).porDisc[d.id] || 0; const pct = Math.round(v / maxCell * 70); return `<td style="background:color-mix(in oklab,var(--accent) ${pct}%,var(--surface-2));color:${pct > 45 ? "var(--accent-ink)" : "var(--ink)"}">${v || "·"}</td>`; }).join("")}</tr>`).join("")}
+    </tbody></table></div>` : "";
+  return `<section class="card stack">
+    <h2>Estadísticas</h2>
+    <div class="tiles">
+      <div class="tile"><div class="k">Más victorias</div><div class="v">${esc(masGan.nombre)}</div><div class="s num">${masGan.gan} ganados</div></div>
+      <div class="tile"><div class="k">Más efectivo</div><div class="v">${efic ? esc(efic.nombre) : "—"}</div><div class="s num">${efic ? (efic.pts / efic.pj).toFixed(1).replace(".", ",") + " pts por partido" : ""}</div></div>
+      <div class="tile"><div class="k">Mejor racha actual</div><div class="v">${racha.racha ? esc(racha.nombre) : "—"}</div><div class="s num">${racha.racha ? racha.racha + " seguidos" : "nadie en racha"}</div></div>
+      <div class="tile"><div class="k">Disciplina más jugada</div><div class="v">${discTop ? esc(C.Dm[discTop[0]]?.nombre || "—") : "—"}</div><div class="s num">${discTop ? discTop[1] + " partidos" : ""}</div></div>
+    </div>
+    ${heat ? `<div><p class="eyebrow" style="margin-bottom:6px">Puntos por disciplina</p>${heat}</div>` : ""}
+  </section>`;
+}
+function drawChart(C) {
+  const box = document.getElementById("chart"); if (!box) return;
+  const J = S.data.sala.jugadores, n = C.P.length;
+  const W = Math.max(280, box.clientWidth || 320), H = 230;
+  const direct = J.length <= 4;
+  const m = { l: 30, r: direct ? 64 : 14, t: 10, b: 26 };
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const maxY = Math.max(3, ...J.map(j => C.serie[j.id][n]));
+  const step = [1, 2, 3, 5, 10, 15, 20, 25, 50, 100].find(s => maxY / s <= 5) || 100;
+  const top = Math.ceil(maxY / step) * step;
+  const x = i => m.l + (n ? i / n * iw : 0), y = v => m.t + ih - v / top * ih;
+  let g = "";
+  for (let v = 0; v <= top; v += step) g += `<line x1="${m.l}" x2="${m.l + iw}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${m.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  const every = Math.ceil(n / Math.max(1, Math.floor(iw / 44)));
+  for (let i = every; i <= n; i += every) g += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle">${i}</text>`;
+  g += `<text x="${m.l}" y="${H - 8}" text-anchor="start">0</text>`;
+  const lines = J.map((j, k) => {
+    const pts = C.serie[j.id].map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    return `<polyline points="${pts}" fill="none" stroke="${colorOf(k)}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  }).join("");
+  const ends = J.map((j, k) => `<circle cx="${x(n)}" cy="${y(C.serie[j.id][n])}" r="4.5" fill="${colorOf(k)}" stroke="var(--surface)" stroke-width="2"/>`).join("");
+  let labels = "";
+  if (direct) {
+    const ls = J.map((j, k) => ({ k, nm: j.nombre, v: C.serie[j.id][n], yy: y(C.serie[j.id][n]) })).sort((a, b) => a.yy - b.yy);
+    for (let i = 1; i < ls.length; i++) if (ls[i].yy - ls[i - 1].yy < 14) ls[i].yy = ls[i - 1].yy + 14;
+    labels = ls.map(l => `<text class="lbl" x="${x(n) + 9}" y="${l.yy + 4}">${esc(l.nm.slice(0, 8))} ${l.v}</text>`).join("");
+  }
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Puntos acumulados por jugador"><g>${g}</g>${lines}${ends}${labels}<line id="xh" y1="${m.t}" y2="${m.t + ih}" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="3 3" visibility="hidden"/><g id="hd"></g><rect x="${m.l}" y="0" width="${iw}" height="${H}" fill="transparent" id="hit"/></svg>`;
+  const svg = box.querySelector("svg"), tip = document.getElementById("tip"), xh = svg.querySelector("#xh"), hd = svg.querySelector("#hd");
+  const move = ev => {
+    const r = svg.getBoundingClientRect(); const px = (ev.clientX - r.left) * (W / r.width);
+    const i = Math.max(0, Math.min(n, Math.round((px - m.l) / iw * n)));
+    xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
+    hd.innerHTML = J.map((j, k) => `<circle cx="${x(i)}" cy="${y(C.serie[j.id][i])}" r="4" fill="${colorOf(k)}" stroke="var(--surface)" stroke-width="2"/>`).join("");
+    const p = C.P[i - 1];
+    const vals = J.map((j, k) => ({ nm: j.nombre, k, v: C.serie[j.id][i] })).sort((a, b) => b.v - a.v);
+    tip.innerHTML = `<div class="th">${i === 0 ? "Inicio" : `Partido ${i} · ${esc(C.Dm[p.disc]?.nombre || "")} · ${fCorta(p.fecha)}`}</div>` +
+      vals.map(o => `<div class="tr"><span><i class="dot" style="background:${colorOf(o.k)}"></i>${esc(o.nm)}</span><b class="num">${o.v}</b></div>`).join("");
+    tip.hidden = false;
+    const cw = box.clientWidth, tx = x(i) / W * cw;
+    tip.style.top = "8px";
+    tip.style.left = (tx > cw / 2 ? Math.max(0, tx - tip.offsetWidth - 12) : Math.min(cw - tip.offsetWidth, tx + 12)) + "px";
+  };
+  const hide = () => { tip.hidden = true; xh.setAttribute("visibility", "hidden"); hd.innerHTML = ""; };
+  const hit = svg.querySelector("#hit");
+  hit.addEventListener("pointermove", move); hit.addEventListener("pointerdown", move); hit.addEventListener("pointerleave", hide);
+}
+
+/* ---------- PARTIDOS ---------- */
+function vPartidos(C) {
+  const J = Object.fromEntries(S.data.sala.jugadores.map((j, i) => [j.id, { ...j, i }]));
+  if (!C.P.length) return `<div class="card empty"><h2 style="color:var(--ink)">Sin partidos todavía</h2><p>Cada resultado que cargues aparece acá, del más nuevo al más viejo.</p></div>`;
+  const items = [...C.P].reverse().map(p => {
+    const f = fD(p.fecha), d = C.Dm[p.disc];
+    let det = "";
+    if (p.tipo === "equipos") {
+      const tn = k => p.equipos[k].map(id => esc(J[id]?.nombre || "?")).join(" + ");
+      det = `<div class="small" style="margin-top:4px">${p.gana === "A" ? "<b>" + tn("A") + "</b>" : tn("A")} <span class="muted">vs</span> ${p.gana === "B" ? "<b>" + tn("B") + "</b>" : tn("B")}${p.gana === "E" ? ' <span class="tag">empate</span>' : ""}</div>`;
+    }
+    const orden = Object.entries(p.pts).sort((a, b) => b[1] - a[1]);
+    const res = orden.map(([id, v]) => `<span class="${v ? "" : "z"}"><i class="dot" style="background:${J[id] ? colorOf(J[id].i) : "var(--ink-3)"}"></i>${esc(J[id]?.nombre || "?")} <span class="pp">${v ? "+" + v : "0"}</span></span>`).join("");
+    const tipo = { podio: "Podio", equipos: p.equipos && p.equipos.A.length === 1 && p.equipos.B.length === 1 ? "1 vs 1" : "Equipos", libre: "Puntos a mano" }[p.tipo];
+    return `<div class="match"><div class="mdate"><b>${f.d}</b><span>${f.m}</span></div>
+      <div class="mbody"><div class="mt">${esc(d ? d.nombre : "Disciplina borrada")} <span class="tag">${tipo}</span></div>${det}<div class="res">${res}</div>
+      <div id="cf-${p.id}"><button class="btn ghost small" data-delp="${p.id}" style="padding-left:0;margin-top:2px">Borrar</button></div></div></div>`;
+  }).join("");
+  return `<section class="card"><div class="row" style="justify-content:space-between;margin-bottom:4px"><h2>Partidos</h2><span class="muted small num">${C.P.length} en total</span></div>${items}</section>`;
+}
+
+/* ---------- FECHAS ---------- */
+function vFechas(C) {
+  const F = [...S.data.fechas].sort((a, b) => a.fecha.localeCompare(b.fecha));
+  const prox = F.filter(f => diasHasta(f.fecha) >= 0), pas = F.filter(f => diasHasta(f.fecha) < 0).reverse();
+  const nomD = ids => (ids || []).map(id => C.Dm[id]?.nombre).filter(Boolean).join(" · ");
+  const N = prox[0];
+  const dd = N ? diasHasta(N.fecha) : null;
+  const cuando = d => d === 0 ? "Hoy" : d === 1 ? "Mañana" : `En ${d} días`;
+  const pend = S.data.sala.disciplinas.filter(d => !C.jugadas.has(d.id));
+  const item = (f, past) => { const x = fD(f.fecha); return `<div class="fecha"><div class="mdate"><b>${x.d}</b><span>${x.m}</span></div>
+      <div><div style="font-weight:700">${esc(nomD(f.discs) || "Disciplinas a definir")}</div><div class="muted small">${esc(x.w)}${f.hora ? " · " + esc(f.hora) + " h" : ""}${f.lugar ? " · " + esc(f.lugar) : ""}</div></div>
+      <div id="cf-${f.id}"><button class="iconbtn" style="box-shadow:none;background:transparent" data-delf="${f.id}" ${past ? 'data-past="1"' : ""} aria-label="${past ? "Borrar" : "Opciones de"} fecha">${I.x}</button></div></div>`; };
+  const recordatorio = (N && (dd === 0 || dd === 1)) ? `<div class="banner" style="background:var(--accent-2)"><div><b>${dd === 0 ? "Hoy juegan" : "Mañana juegan"}</b> — ${esc(nomD(N.discs) || "queda por definir qué")}${N.hora ? " a las " + esc(N.hora) + " h" : ""}${N.lugar ? " en " + esc(N.lugar) : ""}.</div></div>` : "";
+  return `<div class="stack">
+    ${recordatorio}
+    ${N ? `<div class="next"><div class="dd"><b>${fD(N.fecha).d}</b><span>${fD(N.fecha).m}</span></div>
+      <div><p class="eyebrow" style="color:inherit;opacity:.85">Próxima fecha · ${cuando(dd)}</p><h3>${esc(nomD(N.discs) || "Disciplinas a definir")}</h3>
+      <p>${esc(fD(N.fecha).w)}${N.hora ? " " + esc(N.hora) + " h" : ""}${N.lugar ? " · " + esc(N.lugar) : ""}</p>${N.nota ? `<p>${esc(N.nota)}</p>` : ""}
+      <div class="row" style="margin-top:10px"><button class="btn" data-a="reprogramarNext" data-id="${N.id}" style="background:rgba(255,255,255,.2);color:inherit;box-shadow:none">Reprogramar</button></div></div></div>`
+      : `<div class="card empty"><h2 style="color:var(--ink)">No hay fechas programadas</h2><p>Arreglen cuándo se vuelven a juntar y anótenlo acá.</p></div>`}
+    <button class="btn primary block" data-a="nuevafecha">${I.plus.replace("<svg", '<svg style="width:18px;height:18px;vertical-align:-4px;margin-right:6px"')}Programar fecha</button>
+    <section class="card stack">
+      <div><h2>Sorteo</h2><p class="muted small" style="margin:4px 0 0">La app elige entre las disciplinas que todavía no jugaron${pend.length ? ` (quedan ${pend.length})` : ""}.</p></div>
+      <div id="sorteo" class="preview" style="font-family:var(--head);font-weight:800;font-size:26px;text-transform:uppercase;text-align:center;min-height:52px">${pend.length ? "¿Qué toca?" : "Ya jugaron todas"}</div>
+      <button class="btn block" data-a="sortear" ${S.data.sala.disciplinas.length ? "" : "disabled"}>Sortear disciplina</button>
+    </section>
+    ${prox.length > 1 ? `<section class="card"><h2 style="margin-bottom:4px">Más adelante</h2>${prox.slice(1).map(f => item(f, false)).join("")}</section>` : ""}
+    ${pas.length ? `<section class="card"><h2 style="margin-bottom:4px">Fechas pasadas</h2>${pas.map(f => item(f, true)).join("")}</section>` : ""}
+  </div>`;
+}
+
+/* ---------- DISCIPLINAS ---------- */
+function vDisciplinas(C) {
+  const s = S.data.sala;
+  const lider = did => { let best = null, bv = 0; C.tabla.forEach(r => { const v = r.porDisc[did] || 0; if (v > bv) { bv = v; best = r; } }); return best ? `${best.nombre} lidera con ${bv}` : ""; };
+  const discRow = d => `<div class="disc"><div><div class="dn"><i class="dot" style="background:var(--cat-${d.cat})"></i>${esc(d.nombre)}</div><div class="muted small">${C.conteo[d.id] ? C.conteo[d.id] + (C.conteo[d.id] === 1 ? " partido" : " partidos") + " · " + esc(lider(d.id)) : "Todavía sin jugar"}</div></div>
+    <div class="row" id="cf-${d.id}"><span class="status ${C.jugadas.has(d.id) ? "done" : "todo"}">${C.jugadas.has(d.id) ? "Jugada" : "Pendiente"}</span><button class="iconbtn" style="box-shadow:none;background:transparent;width:32px;height:32px" data-deld="${d.id}" aria-label="Quitar ${esc(d.nombre)}">${I.x}</button></div></div>`;
+  const porCat = {}; s.disciplinas.forEach(d => (porCat[d.cat] ||= []).push(d));
+  const lista = Object.keys(CATS).filter(k => porCat[k] && porCat[k].length).map(k => `<div class="catgroup"><p class="catlabel"><i class="dot" style="background:var(--cat-${k})"></i>${CATS[k]}</p>${porCat[k].map(discRow).join("")}</div>`).join("");
+  const ya = new Set(s.disciplinas.map(d => d.nombre.toLowerCase()));
+  const sug = Object.entries(CATS).map(([k, lab]) => {
+    const it = CATALOGO.filter(([n, c]) => c === k && !ya.has(n.toLowerCase()));
+    return it.length ? `<div><p class="catlabel"><i class="dot" style="background:var(--cat-${k})"></i>${lab}</p><div class="row">${it.map(([n, c]) => `<button class="chip" data-addd="${esc(n)}" data-cat="${c}"><i class="dot" style="background:var(--cat-${c})"></i>${esc(n)}</button>`).join("")}</div></div>` : "";
+  }).join("");
+  return `<div class="stack">
+    <section class="card stack">
+      <div class="row" style="justify-content:space-between"><h2>Disciplinas de la sala</h2><span class="muted small num">${s.disciplinas.length} ${s.disciplinas.length === 1 ? "disciplina" : "disciplinas"}</span></div>
+      <p class="muted small" style="margin:0">Todas valen lo mismo. Agreguen las que quieran, cuando quieran.</p>
+      ${lista ? `<div>${lista}</div>` : `<div class="empty">Elegí de las sugeridas o creá una propia.</div>`}
+    </section>
+    <section class="card stack">
+      <h2>Crear una propia</h2>
+      <div class="field"><label for="nd-n">Nombre</label><input class="input" id="nd-n" maxlength="30" placeholder="Ej: Tiro al arco con los ojos cerrados"></div>
+      <div class="seg" id="nd-cat">${Object.entries(CATS).map(([k, l], i) => `<button data-v="${k}" aria-pressed="${i === 3}">${l.split(" ")[0]}</button>`).join("")}</div>
+      <button class="btn primary block" data-a="crearDisc">Agregar disciplina</button>
+    </section>
+    <section class="card stack"><h2>Sugeridas</h2>${sug || '<p class="muted">Ya agregaste todas las sugeridas.</p>'}</section>
+  </div>`;
+}
+
+/* ---------- TANTEADOR ---------- */
+function fosforo(n) {
+  const L = [[4, 4, 4, 32], [4, 4, 32, 4], [32, 4, 32, 32], [4, 32, 32, 32], [6, 30, 30, 6]];
+  return `<svg viewBox="0 0 36 36" aria-hidden="true">${L.slice(0, n).map(l => `<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}"/>`).join("")}</svg>`;
+}
+function grupoF(v) { let h = ""; for (let i = 0; i < Math.ceil(v / 5); i++) h += fosforo(Math.min(5, v - i * 5)); return h; }
+function vTanteador() {
+  const T = S.tant, J = S.data.sala.jugadores;
+  const seg = `<div class="seg" style="margin-bottom:12px"><button data-tm="truco" aria-pressed="${T.modo === "truco"}">Truco</button><button data-tm="libre" aria-pressed="${T.modo === "libre"}">Contador libre</button></div>`;
+  if (T.modo === "libre") {
+    return seg + `<section class="card"><div class="row" style="justify-content:space-between;margin-bottom:4px"><h2>Contador</h2><button class="btn ghost" data-a="resetLibre">Poner en cero</button></div>
+      <p class="muted small" style="margin:0 0 6px">Para dardos, generala, bowling o lo que sea. Después cargás el resultado final.</p>
+      <div class="counters">${J.map((j, i) => `<div class="ctr"><div class="nm" style="font-weight:700;display:flex;gap:8px;align-items:center"><i class="dot" style="background:${colorOf(i)}"></i>${esc(j.nombre)}</div>
+        <button class="btn" data-lc="${j.id}" data-d="-1" aria-label="Restar a ${esc(j.nombre)}">−</button><div class="v num">${T.libre[j.id] || 0}</div><button class="btn primary" data-lc="${j.id}" data-d="1" aria-label="Sumar a ${esc(j.nombre)}">+</button></div>`).join("")}</div></section>`;
+  }
+  const half = T.max / 2;
+  const fos = v => T.max === 30 ? `<div class="fosforos"><div class="half">${grupoF(Math.min(v, half))}</div><div class="sep"></div><div class="half">${grupoF(Math.max(0, v - half))}</div></div>` : `<div class="fosforos"><div class="half">${grupoF(v)}</div></div>`;
+  const win = T.a >= T.max ? "a" : T.b >= T.max ? "b" : "";
+  const team = k => { const v = T[k]; const nm = k === "a" ? T.na : T.nb;
+    const etapa = T.max === 30 ? (v >= half ? "buenas" : "malas") : "";
+    return `<div class="team ${win === k ? "win" : ""}"><input id="tn-${k}" value="${esc(nm)}" maxlength="14" aria-label="Nombre del equipo">
+      <div class="tv num">${v}<small>${etapa ? `${etapa}${T.max === 30 ? " · " + (v >= half ? v - half : v) : ""}` : "&nbsp;"}</small></div>${fos(v)}
+      <div class="ctrl"><button class="btn" data-tc="${k}" data-d="-1" aria-label="Restar">−</button><button class="btn primary" data-tc="${k}" data-d="1" aria-label="Sumar">+1</button></div></div>`; };
+  return seg + `<div class="stack">
+    <div class="row" style="justify-content:space-between"><div class="seg"><button data-tmax="30" aria-pressed="${T.max === 30}">A 30</button><button data-tmax="15" aria-pressed="${T.max === 15}">A 15</button></div><button class="btn ghost" data-a="resetTruco">Nuevo partido</button></div>
+    ${win ? `<div class="banner" style="background:color-mix(in oklab,var(--good) 18%,var(--surface))"><div><b>¡Ganó ${esc(win === "a" ? T.na : T.nb)}!</b> Cargalo en la tabla.</div><button class="btn primary" data-a="cargarTruco">Cargar resultado</button></div>` : ""}
+    <div class="score">${team("a")}${team("b")}</div>
+    <p class="muted small" style="margin:0;text-align:center">Se cuenta con fosforitos: cada cuadrado cerrado con la diagonal son 5 puntos.</p>
+  </div>`;
+}
+const saveTant = () => lsSet("oea_tant", S.tant);
+
+/* ============ hoja (modal) ============ */
+function openSheet(html, mount) {
+  layer.innerHTML = `<div class="veil" id="veil"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${html}</div></div>`;
+  const v = document.getElementById("veil");
+  v.addEventListener("click", e => { if (e.target === v || e.target.closest("[data-close]")) closeSheet(); });
+  document.addEventListener("keydown", escClose);
+  const sheetEl = v.querySelector(".sheet");
+  if (mount) mount(sheetEl);
+  const focusable = sheetEl.querySelector("input, select, textarea, button:not([data-close])") || sheetEl.querySelector("[data-close]");
+  if (focusable) focusable.focus({ preventScroll: true });
+}
+const escClose = e => { if (e.key === "Escape") closeSheet(); };
+function closeSheet() { layer.innerHTML = ""; document.removeEventListener("keydown", escClose); if (pendingRender) render(); }
+const sheetHead = t => `<header><h2>${t}</h2><button class="iconbtn" data-close aria-label="Cerrar">${I.x}</button></header>`;
+
+/* ---------- cargar resultado ---------- */
+function sheetResultado(pre = {}) {
+  const s = S.data.sala, J = s.jugadores, P = s.puntaje || DEF_PUNTAJE;
+  let discs = [...s.disciplinas];
+  const F = { disc: pre.disc || (discs[0] ? discs[0].id : "__new__"), fecha: hoyISO(), tipo: pre.tipo || "podio", part: new Set(J.map(j => j.id)), orden: [], eq: {}, gana: pre.gana || "A", libre: {}, nuevoCat: "otro" };
+  if (pre.eq) F.eq = pre.eq;
+  const idx = Object.fromEntries(J.map((j, i) => [j.id, i]));
+  const nm = id => esc(J[idx[id]].nombre);
+  const calcPts = () => {
+    const pts = {}; const part = J.filter(j => F.part.has(j.id)).map(j => j.id);
+    part.forEach(id => pts[id] = 0);
+    if (F.tipo === "podio") F.orden.filter(id => F.part.has(id)).forEach((id, i) => pts[id] = P.podio[i] ?? 0);
+    else if (F.tipo === "equipos") {
+      const A = part.filter(id => F.eq[id] === "A"), B = part.filter(id => F.eq[id] === "B");
+      if (F.gana === "E") [...A, ...B].forEach(id => pts[id] = P.empate); else (F.gana === "A" ? A : B).forEach(id => pts[id] = P.ganador);
+      part.filter(id => !F.eq[id]).forEach(id => delete pts[id]);
+    } else part.forEach(id => pts[id] = Math.max(0, Math.round(+F.libre[id] || 0)));
+    return pts;
+  };
+  const body = () => {
+    const part = J.filter(j => F.part.has(j.id));
+    let modo = "";
+    if (F.tipo === "podio") {
+      const ord = F.orden.filter(id => F.part.has(id));
+      modo = `<p class="muted small" style="margin:0">Tocá a los jugadores en el orden en que terminaron.</p><div class="order">${part.map(j => { const p = ord.indexOf(j.id);
+        return `<button data-ord="${j.id}"><span class="pos ${p > -1 ? "p" + (p + 1) : ""}">${p > -1 ? p + 1 + "°" : "–"}</span><span>${esc(j.nombre)}</span><span class="muted small num">${p > -1 ? "+" + (P.podio[p] ?? 0) : ""}</span></button>`; }).join("")}</div>
+        ${ord.length ? `<button class="btn ghost small" data-a="resetOrd" style="align-self:flex-start">Reiniciar orden</button>` : ""}`;
+    } else if (F.tipo === "equipos") {
+      modo = `<p class="muted small" style="margin:0">Armá los equipos. Para un mano a mano, uno en cada lado.</p><div class="teamsel">${part.map(j => `<div class="tr"><span style="font-weight:600">${esc(j.nombre)}</span><div class="seg"><button data-teq="${j.id}" data-v="A" aria-pressed="${F.eq[j.id] === "A"}">Equipo A</button><button data-teq="${j.id}" data-v="B" aria-pressed="${F.eq[j.id] === "B"}">Equipo B</button></div></div>`).join("")}</div>
+        <div class="field"><label>¿Quién ganó?</label><div class="seg"><button data-gana="A" aria-pressed="${F.gana === "A"}">Equipo A</button><button data-gana="B" aria-pressed="${F.gana === "B"}">Equipo B</button><button data-gana="E" aria-pressed="${F.gana === "E"}">Empate</button></div></div>`;
+    } else {
+      modo = `<p class="muted small" style="margin:0">Poné los puntos que se lleva cada uno para la tabla.</p><div class="teamsel">${part.map(j => `<div class="tr"><label for="lb-${j.id}" style="font-weight:600">${esc(j.nombre)}</label><input class="input num" type="number" min="0" max="99" inputmode="numeric" id="lb-${j.id}" data-lib="${j.id}" value="${F.libre[j.id] ?? ""}" style="width:90px;text-align:center" placeholder="0"></div>`).join("")}</div>`;
+    }
+    const pts = calcPts(); const lst = Object.entries(pts).sort((a, b) => b[1] - a[1]);
+    const valido = F.disc === "__new__" ? false : F.tipo === "podio" ? F.orden.filter(id => F.part.has(id)).length >= 1 : F.tipo === "equipos" ? (J.some(j => F.part.has(j.id) && F.eq[j.id] === "A") && J.some(j => F.part.has(j.id) && F.eq[j.id] === "B")) : Object.values(pts).some(v => v > 0);
+    const nuevaForm = F.disc === "__new__" ? `<div class="preview stack" style="gap:8px">
+        <div class="field"><label for="nd2-n">Nombre de la disciplina</label><input class="input" id="nd2-n" maxlength="30" placeholder="Ej: Metegol" value="${esc(F.nuevoNombre || "")}"></div>
+        <div class="seg" id="nd2-cat">${Object.entries(CATS).map(([k, l]) => `<button data-v2="${k}" aria-pressed="${F.nuevoCat === k}">${l.split(" ")[0]}</button>`).join("")}</div>
+        <div class="row"><button class="btn primary" data-a="confirmarNueva">Agregar y usar</button>${discs.length ? `<button class="btn ghost" data-a="cancelarNueva">Cancelar</button>` : ""}</div>
+      </div>` : "";
+    return `${sheetHead("Cargar resultado")}
+      <div class="stack">
+        <div class="row" style="flex-wrap:nowrap"><div class="field" style="flex:2"><label for="r-disc">Disciplina</label><select class="input" id="r-disc">${discs.map(d => `<option value="${d.id}" ${d.id === F.disc ? "selected" : ""}>${esc(d.nombre)}</option>`).join("")}<option value="__new__" ${F.disc === "__new__" ? "selected" : ""}>+ Nueva disciplina…</option></select></div>
+          <div class="field" style="flex:1.3"><label for="r-fecha">Fecha</label><input class="input" type="date" id="r-fecha" value="${F.fecha}"></div></div>
+        ${nuevaForm}
+        <div class="field"><label>¿Quiénes jugaron?</label><div class="row">${J.map((j, i) => `<button class="chip" data-part="${j.id}" aria-pressed="${F.part.has(j.id)}"><i class="dot" style="background:${colorOf(i)}"></i>${esc(j.nombre)}</button>`).join("")}</div></div>
+        <div class="field"><label>Cómo se define</label><div class="seg"><button data-tipo="podio" aria-pressed="${F.tipo === "podio"}">Podio</button><button data-tipo="equipos" aria-pressed="${F.tipo === "equipos"}">1 vs 1 / Equipos</button><button data-tipo="libre" aria-pressed="${F.tipo === "libre"}">A mano</button></div></div>
+        ${modo}
+        <div class="preview"><b>Suma:</b> ${lst.length ? lst.map(([id, v]) => `${nm(id)} <b class="num">${v ? "+" + v : "0"}</b>`).join(" · ") : '<span class="muted">elegí jugadores</span>'}</div>
+        <button class="btn primary block" data-a="guardarRes" ${valido ? "" : "disabled"}>Guardar resultado</button>
+      </div>`;
+  };
+  openSheet(body(), sh => {
+    const re = () => { const st = sh.scrollTop; sh.innerHTML = '<div class="grab"></div>' + body(); sh.scrollTop = st; };
+    sh.addEventListener("change", e => {
+      if (e.target.id === "r-disc") { F.disc = e.target.value; re(); }
+      if (e.target.id === "r-fecha") F.fecha = e.target.value || hoyISO();
+    });
+    sh.addEventListener("input", e => {
+      const id = e.target.dataset.lib; if (id) { F.libre[id] = e.target.value; const pv = sh.querySelector(".preview"); const pts = calcPts(); pv.innerHTML = "<b>Suma:</b> " + Object.entries(pts).sort((a, b) => b[1] - a[1]).map(([i, v]) => `${nm(i)} <b class="num">${v ? "+" + v : "0"}</b>`).join(" · "); sh.querySelector('[data-a="guardarRes"]').disabled = !Object.values(pts).some(v => v > 0); }
+      if (e.target.id === "nd2-n") F.nuevoNombre = e.target.value;
+    });
+    sh.addEventListener("click", async e => {
+      const b = e.target.closest("button"); if (!b) return;
+      if (b.dataset.part) { const id = b.dataset.part; F.part.has(id) ? F.part.delete(id) : F.part.add(id); re(); }
+      else if (b.dataset.tipo) { F.tipo = b.dataset.tipo; re(); }
+      else if (b.dataset.ord) { const id = b.dataset.ord; F.orden = F.orden.includes(id) ? F.orden.filter(x => x !== id) : [...F.orden, id]; re(); }
+      else if (b.dataset.teq) { F.eq[b.dataset.teq] = F.eq[b.dataset.teq] === b.dataset.v ? undefined : b.dataset.v; re(); }
+      else if (b.dataset.gana) { F.gana = b.dataset.gana; re(); }
+      else if (b.dataset.a === "resetOrd") { F.orden = []; re(); }
+      else if (b.dataset.v2) { F.nuevoCat = b.dataset.v2; re(); }
+      else if (b.dataset.a === "confirmarNueva") {
+        const inp = sh.querySelector("#nd2-n"); const nombre = (inp ? inp.value : "").trim();
+        if (!nombre) { toast("Ponele un nombre"); return; }
+        b.disabled = true;
+        try {
+          const r = await crearDisciplina(nombre, F.nuevoCat || "otro");
+          if (r.dup) { toast("Esa disciplina ya está"); b.disabled = false; return; }
+          discs.push(r.nueva); F.disc = r.nueva.id; F.nuevoNombre = ""; toast(r.nueva.nombre + " agregada"); re();
+        } catch (err) { b.disabled = false; writeErr(err); }
+      }
+      else if (b.dataset.a === "cancelarNueva") { F.disc = discs[0] ? discs[0].id : "__new__"; re(); }
+      else if (b.dataset.a === "guardarRes") {
+        const pts = calcPts(); const jug = Object.keys(pts);
+        const rec = { id: uid(), disc: F.disc, fecha: F.fecha, tipo: F.tipo, jugadores: jug, pts, creado: Date.now() };
+        if (F.tipo === "podio") rec.orden = F.orden.filter(id => F.part.has(id));
+        if (F.tipo === "equipos") { rec.equipos = { A: jug.filter(id => F.eq[id] === "A"), B: jug.filter(id => F.eq[id] === "B") }; rec.gana = F.gana; }
+        b.disabled = true;
+        try { await backend.put(S.code, "partidos", rec); closeSheet(); S.tab = "tabla"; render(); toast("Resultado cargado"); }
+        catch (err) { b.disabled = false; writeErr(err); }
+      }
+    });
+  });
+}
+
+/* ---------- unirse a una sala con tu nombre ---------- */
+function sheetUnirse(code, sala) {
+  openSheet(`${sheetHead("Unirte a " + esc(sala.nombre))}
+    <div class="stack">
+      <p class="muted small" style="margin:0">Escribí cómo te llamás para entrar. Si ya estabas en la lista de la sala, se usa el mismo jugador.</p>
+      <div class="field"><label for="j-n">Tu nombre</label><input class="input" id="j-n" maxlength="16" placeholder="Ej: Juan"></div>
+      <button class="btn primary block" id="j-ok">Entrar a la sala</button>
+    </div>`, sh => {
+    const inp = sh.querySelector("#j-n"); inp.focus();
+    const go = async () => {
+      const nombre = inp.value.trim();
+      if (!nombre) { toast("Escribí tu nombre"); return; }
+      const btn = sh.querySelector("#j-ok"); btn.disabled = true;
+      try {
+        const existente = sala.jugadores.find(j => j.nombre.toLowerCase() === nombre.toLowerCase());
+        let idFinal;
+        if (existente) { idFinal = existente.id; }
+        else {
+          if (sala.jugadores.length >= MAX_JUG) { toast("La sala ya tiene " + MAX_JUG + " jugadores"); btn.disabled = false; return; }
+          const nuevo = { id: uid(), nombre };
+          await backend.saveSala(code, { ...sala, jugadores: [...sala.jugadores, nuevo] });
+          idFinal = nuevo.id;
+        }
+        lsSet("oea_yo_" + code, idFinal);
+        closeSheet(); S.tab = "tabla"; abrirSala(code);
+      } catch (err) { btn.disabled = false; writeErr(err); }
+    };
+    sh.querySelector("#j-ok").onclick = go;
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
+  });
+}
+
+/* ---------- nueva fecha / reprogramar ---------- */
+function sheetFecha(edit = null) {
+  const s = S.data.sala; const sel = new Set(edit ? edit.discs || [] : []);
+  const C = calc(S.data);
+  openSheet(`${sheetHead(edit ? "Reprogramar fecha" : "Programar fecha")}
+    <div class="stack">
+      <div class="row" style="flex-wrap:nowrap"><div class="field" style="flex:1.4"><label for="f-f">Día</label><input class="input" type="date" id="f-f" value="${edit ? edit.fecha : addDays(hoyISO(), 7)}"></div><div class="field" style="flex:1"><label for="f-h">Hora</label><input class="input" type="time" id="f-h" value="${edit && edit.hora ? edit.hora : "20:00"}"></div></div>
+      <div class="field"><label for="f-l">Dónde</label><input class="input" id="f-l" maxlength="60" placeholder="Ej: Casa de Fede" value="${esc(edit ? edit.lugar || "" : "")}"></div>
+      <div class="field"><label>Qué se juega</label><div class="row">${s.disciplinas.map(d => `<button class="chip" data-fd="${d.id}" aria-pressed="${sel.has(d.id)}"><i class="dot" style="background:var(--cat-${d.cat})"></i>${esc(d.nombre)}${C.jugadas.has(d.id) ? "" : " ·nueva"}</button>`).join("") || '<span class="muted small">Agregá disciplinas primero</span>'}</div></div>
+      <div class="field"><label for="f-n">Nota</label><input class="input" id="f-n" maxlength="80" placeholder="Ej: cada uno lleva algo" value="${esc(edit ? edit.nota || "" : "")}"></div>
+      <button class="btn primary block" id="f-ok">${edit ? "Guardar cambios" : "Guardar fecha"}</button>
+      ${edit ? `<p class="muted small" style="text-align:center;margin:0">Si no llegan a jugar, no pasa nada: solo reprogramen de nuevo.</p>` : ""}
+    </div>`, sh => {
+    sh.addEventListener("click", async e => {
+      const b = e.target.closest("button"); if (!b) return;
+      if (b.dataset.fd) { const id = b.dataset.fd; sel.has(id) ? sel.delete(id) : sel.add(id); b.setAttribute("aria-pressed", sel.has(id)); }
+      if (b.id === "f-ok") {
+        const rec = { id: edit ? edit.id : uid(), fecha: sh.querySelector("#f-f").value || hoyISO(), hora: sh.querySelector("#f-h").value, lugar: sh.querySelector("#f-l").value.trim(), discs: [...sel], nota: sh.querySelector("#f-n").value.trim() };
+        b.disabled = true;
+        try { await backend.put(S.code, "fechas", rec); closeSheet(); render(); toast(edit ? "Fecha actualizada" : "Fecha agendada"); } catch (err) { b.disabled = false; writeErr(err); }
+      }
+    });
+  });
+}
+
+/* ---------- ajustes ---------- */
+function sheetAjustes() {
+  const s = JSON.parse(JSON.stringify(S.data.sala)); s.puntaje ||= { ...DEF_PUNTAJE };
+  const C = calc(S.data);
+  const conPartidos = new Set(C.P.flatMap(p => p.jugadores || []));
+  const miId = lsGet("oea_yo_" + S.code, null);
+  const body = () => `${sheetHead("Ajustes de la sala")}
+    <div class="stack">
+      <div class="field"><label for="a-n">Nombre</label><input class="input" id="a-n" maxlength="40" value="${esc(s.nombre)}"></div>
+      <div class="field"><label>Jugadores (${s.jugadores.length}/${MAX_JUG})</label>
+        <div class="teamsel">${s.jugadores.map((j, i) => `<div class="tr"><span style="display:flex;gap:8px;align-items:center"><i class="dot" style="background:${colorOf(i)}"></i><input class="input" data-jn="${j.id}" value="${esc(j.nombre)}" maxlength="16" style="padding:6px 8px" aria-label="Nombre del jugador"></span>${conPartidos.has(j.id) ? '<span class="muted small">tiene partidos</span>' : `<button class="btn danger" data-jdel="${j.id}">Quitar</button>`}</div>`).join("")}</div>
+        ${s.jugadores.length < MAX_JUG ? `<div class="row" style="flex-wrap:nowrap"><input class="input" id="a-nj" maxlength="16" placeholder="Nuevo jugador"><button class="btn" data-a="addJ">Sumar</button></div>` : ""}
+      </div>
+      ${miId && s.jugadores.some(j => j.id === miId) ? `<div class="row" style="justify-content:space-between;align-items:center;background:var(--surface-2);border-radius:12px;padding:10px 12px"><span class="muted small">¿Ya no jugás más acá?</span><button class="btn danger" data-a="salirSala">Salir y borrar mi nombre</button></div>` : ""}
+      <div class="field"><label>Puntos</label>
+        <div class="tiles" style="grid-template-columns:repeat(3,1fr)">
+          ${["1°", "2°", "3°"].map((l, i) => `<div class="tile"><label class="k" for="a-p${i}">${l} puesto</label><input class="input num" type="number" min="0" max="20" id="a-p${i}" value="${s.puntaje.podio[i] ?? 0}"></div>`).join("")}
+          <div class="tile"><label class="k" for="a-g">Gana equipo / 1 vs 1</label><input class="input num" type="number" min="0" max="20" id="a-g" value="${s.puntaje.ganador}"></div>
+          <div class="tile"><label class="k" for="a-e">Empate</label><input class="input num" type="number" min="0" max="20" id="a-e" value="${s.puntaje.empate}"></div>
+        </div>
+        <p class="muted small" style="margin:0">Cambiar los puntos afecta solo a los resultados que cargues desde ahora.</p>
+      </div>
+      <button class="btn primary block" data-a="guardarAj">Guardar cambios</button>
+      ${S.code !== DEMO ? `<div class="preview small">Para sumar amigos, pasales el código <b style="letter-spacing:.14em">${esc(S.code)}</b>.</div>` : ""}
+    </div>`;
+  openSheet(body(), sh => {
+    const sync = () => { sh.querySelectorAll("[data-jn]").forEach(inp => { const j = s.jugadores.find(x => x.id === inp.dataset.jn); if (j) j.nombre = inp.value.trim() || j.nombre; }); s.nombre = sh.querySelector("#a-n").value.trim() || s.nombre; };
+    const re = () => { sync(); sh.innerHTML = '<div class="grab"></div>' + body(); };
+    sh.addEventListener("click", async e => {
+      const b = e.target.closest("button"); if (!b) return;
+      if (b.dataset.jdel) { if (s.jugadores.length <= 2) { toast("La sala necesita al menos 2 jugadores"); return; } sync(); s.jugadores = s.jugadores.filter(j => j.id !== b.dataset.jdel); re(); }
+      if (b.dataset.a === "addJ") { const v = sh.querySelector("#a-nj").value.trim(); if (!v) return; sync(); s.jugadores.push({ id: uid(), nombre: v }); re(); }
+      if (b.dataset.a === "salirSala") {
+        if (conPartidos.has(miId)) { toast("Tenés partidos cargados: tu nombre queda en el historial de la tabla."); return; }
+        if (s.jugadores.length <= 1) { toast("Sos el único jugador de la sala."); return; }
+        sync(); s.jugadores = s.jugadores.filter(j => j.id !== miId);
+        b.disabled = true;
+        try { await backend.saveSala(S.code, s); lsSet("oea_yo_" + S.code, null); closeSheet(); irHome(); toast("Saliste de la sala"); }
+        catch (err) { b.disabled = false; writeErr(err); }
+        return;
+      }
+      if (b.dataset.a === "guardarAj") {
+        sync();
+        const n = id => Math.max(0, Math.min(20, Math.round(+sh.querySelector(id).value || 0)));
+        s.puntaje = { podio: [n("#a-p0"), n("#a-p1"), n("#a-p2")], ganador: n("#a-g"), empate: n("#a-e") };
+        b.disabled = true;
+        try { await backend.saveSala(S.code, s); closeSheet(); render(); toast("Cambios guardados"); } catch (err) { b.disabled = false; writeErr(err); }
+      }
+    });
+  });
+}
+
+/* ============ eventos globales ============ */
+tabsEl.addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (!b) return; S.tab = b.dataset.tab; lsSet("oea_tab", S.tab); render(); window.scrollTo(0, 0); });
+
+function confirmInline(id, texto, onYes) {
+  const box = document.getElementById("cf-" + id); if (!box) return;
+  const prev = box.innerHTML;
+  box.innerHTML = `<div class="confirm"><span>${texto}</span><button class="btn danger" data-yes>Sí, borrar</button><button class="btn ghost" data-no>No</button></div>`;
+  box.querySelector("[data-no]").onclick = ev => { ev.stopPropagation(); box.innerHTML = prev; };
+  box.querySelector("[data-yes]").onclick = async ev => { ev.stopPropagation(); try { await onYes(); } catch (err) { writeErr(err); } };
+}
+function chooserFecha(id) {
+  const box = document.getElementById("cf-" + id); if (!box) return;
+  const prev = box.innerHTML;
+  box.innerHTML = `<div class="confirm"><span>¿Qué hacemos?</span><button class="btn" data-repro>Reprogramar</button><button class="btn danger" data-cancf>Cancelar</button><button class="btn ghost" data-noop>Volver</button></div>`;
+  box.querySelector("[data-noop]").onclick = ev => { ev.stopPropagation(); box.innerHTML = prev; };
+  box.querySelector("[data-repro]").onclick = ev => { ev.stopPropagation(); const f = S.data.fechas.find(x => x.id === id); if (f) sheetFecha(f); };
+  box.querySelector("[data-cancf]").onclick = ev => { ev.stopPropagation(); confirmInline(id, "¿Cancelar esta fecha? No pasa nada, solo se borra.", async () => { await backend.del(S.code, "fechas", id); }); };
+}
+
+app.addEventListener("click", async e => {
+  const open = e.target.closest("[data-open]"); if (open) { S.tab = "tabla"; abrirSala(open.dataset.open); return; }
+  const b = e.target.closest("button"); if (!b) return;
+  const a = b.dataset.a;
+  if (a === "home") return irHome();
+  if (a === "ajustes") return sheetAjustes();
+  if (a === "copiar") {
+    try { await navigator.clipboard.writeText(S.code); toast("Código copiado: " + S.code); } catch { toast("Tu código es " + S.code); }
+    return;
+  }
+  if (a === "nuevafecha") return sheetFecha();
+  if (a === "sortear") {
+    const C = calc(S.data); const pool = S.data.sala.disciplinas.filter(d => !C.jugadas.has(d.id));
+    const list = pool.length ? pool : S.data.sala.disciplinas; const box = document.getElementById("sorteo");
+    let k = 0; const fin = list[Math.floor(Math.random() * list.length)];
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { box.textContent = fin.nombre; return; }
+    const t = setInterval(() => { box.textContent = list[k++ % list.length].nombre; if (k > 14) { clearInterval(t); box.textContent = fin.nombre; } }, 70);
+    return;
+  }
+  if (a === "crearDisc") {
+    const n = document.getElementById("nd-n").value.trim(); if (!n) { toast("Ponele un nombre"); return; }
+    const cat = document.querySelector("#nd-cat [aria-pressed='true']")?.dataset.v || "otro";
+    return addDisc(n, cat);
+  }
+  if (b.dataset.addd) return addDisc(b.dataset.addd, b.dataset.cat);
+  if (b.closest("#nd-cat")) { document.querySelectorAll("#nd-cat button").forEach(x => x.setAttribute("aria-pressed", x === b)); return; }
+  if (b.dataset.deld) {
+    const C = calc(S.data), id = b.dataset.deld;
+    if (C.conteo[id]) { toast("Tiene partidos cargados: borrá esos partidos primero"); return; }
+    const s = { ...S.data.sala, disciplinas: S.data.sala.disciplinas.filter(d => d.id !== id) };
+    try { await backend.saveSala(S.code, s); } catch (err) { writeErr(err); } return;
+  }
+  if (b.dataset.delp) { const id = b.dataset.delp; return confirmInline(id, "¿Borrar este partido?", async () => { await backend.del(S.code, "partidos", id); toast("Partido borrado"); }); }
+  if (b.dataset.delf) {
+    const id = b.dataset.delf;
+    if (b.dataset.past) return confirmInline(id, "¿Borrar esta fecha pasada?", async () => { await backend.del(S.code, "fechas", id); });
+    return chooserFecha(id);
+  }
+  if (a === "reprogramarNext") { const f = S.data.fechas.find(x => x.id === b.dataset.id); if (f) sheetFecha(f); return; }
+  // tanteador
+  const T = S.tant;
+  if (b.dataset.tm) { T.modo = b.dataset.tm; saveTant(); return render(); }
+  if (b.dataset.tmax) { T.max = +b.dataset.tmax; saveTant(); return render(); }
+  if (b.dataset.tc) { const k = b.dataset.tc; T[k] = Math.max(0, Math.min(T.max, T[k] + +b.dataset.d)); saveTant(); return render(); }
+  if (a === "resetTruco") { T.a = 0; T.b = 0; saveTant(); return render(); }
+  if (b.dataset.lc) { const id = b.dataset.lc; T.libre[id] = (T.libre[id] || 0) + +b.dataset.d; saveTant(); return render(); }
+  if (a === "resetLibre") { T.libre = {}; saveTant(); return render(); }
+  if (a === "cargarTruco") {
+    const truco = S.data.sala.disciplinas.find(d => d.nombre.toLowerCase() === "truco");
+    return sheetResultado({ disc: truco?.id, tipo: "equipos", gana: T.a >= T.max ? "A" : "B" });
+  }
+});
+app.addEventListener("change", e => {
+  if (e.target.id === "tn-a") { S.tant.na = e.target.value.trim() || "Nosotros"; saveTant(); }
+  if (e.target.id === "tn-b") { S.tant.nb = e.target.value.trim() || "Ellos"; saveTant(); }
+});
+async function crearDisciplina(nombre, cat) {
+  const s = S.data.sala;
+  if (s.disciplinas.some(d => d.nombre.toLowerCase() === nombre.toLowerCase())) return { dup: true };
+  const nueva = { id: uid(), nombre, cat };
+  await backend.saveSala(S.code, { ...s, disciplinas: [...s.disciplinas, nueva] });
+  return { nueva };
+}
+async function addDisc(nombre, cat) {
+  try {
+    const r = await crearDisciplina(nombre, cat);
+    if (r.dup) { toast("Esa disciplina ya está"); return; }
+    toast(r.nueva.nombre + " agregada");
+  } catch (err) { writeErr(err); }
+}
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (S.view === "sala" && S.tab === "tabla" && S.data) drawChart(calc(S.data)); }, 150); });
+
+/* ============ arranque ============ */
+const ultima = lsGet("oea_ultima", null);
+if (ultima && ultima !== DEMO && isLocal(ultima)) abrirSala(ultima);
+else if (ultima && ultima !== DEMO) { render(); dbPromise.then(db => { if (db) abrirSala(ultima); }); }
+else if (!S.recientes.length) abrirSala(DEMO);
+else render();
+})();
+</script>
+
+</body>
+</html>
