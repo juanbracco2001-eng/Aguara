@@ -1,0 +1,16 @@
+{
+  "name": "Aguará",
+  "short_name": "Aguará",
+  "description": "Olimpíadas entre amigos: salas con código, disciplinas a elección y una tabla compartida.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EFE7D3",
+  "theme_color": "#17130C",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -6,6 +6,9 @@
 <meta name="theme-color" content="#17130C">
 <meta name="description" content="Aguará: olimpíadas entre amigos. Salas con código, disciplinas a elección y una tabla compartida.">
 <title>Aguará</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@600;700;800;900&family=Jost:wght@400;500;600;700&display=swap">
@@ -16,7 +19,7 @@
   --accent:#D2401F; --accent-2:#F3DCC9; --accent-ink:#FFFFFF;
   --gold:#A9790A; --silver:#7C8794; --bronze:#9C5B2E;
   --good:#1E7A44; --bad:#B5311F;
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#0f8b99; --s10:#8a5a32;
   --cat-dep:#1E4FA3; --cat-mesa:#AD7415; --cat-esp:#D2401F; --cat-otro:#17130C;
   --shadow:0 1px 2px rgba(23,19,12,.08),0 6px 18px rgba(23,19,12,.09);
   --display:"Anton",Impact,sans-serif;
@@ -31,7 +34,7 @@
     --accent:#F2643F; --accent-2:#3C2318; --accent-ink:#1A0A05;
     --gold:#D9A824; --silver:#B7C0CF; --bronze:#D58C5B;
     --good:#43C07A; --bad:#EE6B61;
-    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#2bb3c2; --s10:#b88457;
     --cat-dep:#4C86E0; --cat-mesa:#E7AC2E; --cat-esp:#F2643F; --cat-otro:#F5EEDD;
     --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.3);
   }
@@ -43,7 +46,7 @@
   --accent:#F2643F; --accent-2:#3C2318; --accent-ink:#1A0A05;
   --gold:#D9A824; --silver:#B7C0CF; --bronze:#D58C5B;
   --good:#43C07A; --bad:#EE6B61;
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#2bb3c2; --s10:#b88457;
   --cat-dep:#4C86E0; --cat-mesa:#E7AC2E; --cat-esp:#F2643F; --cat-otro:#F5EEDD;
   --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.3);
 }
@@ -58,17 +61,17 @@ button{cursor:pointer}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);padding-block:14px 10px;display:flex;align-items:center;gap:10px}
-.brandmark{border:0;border-radius:11px;width:40px;height:40px;display:grid;place-items:center;flex:none;background:var(--cat-dep);color:var(--accent-ink);padding:8px}
-.brandmark svg{width:100%;height:100%;display:block}
-.brandmark.lg{width:60px;height:60px;border-radius:15px;padding:10px}
+.brandmark{border:0;border-radius:12px;width:42px;height:42px;display:grid;place-items:center;flex:none;background:#17130C;padding:3px;overflow:hidden}
+.brandmark img{width:100%;height:100%;display:block;object-fit:contain}
+.brandmark.lg{width:72px;height:72px;border-radius:18px;padding:5px}
 .brandlockup{display:flex;align-items:center;gap:12px;margin-bottom:2px}
 .wordmark{font-family:var(--display);font-size:30px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink);line-height:1}
 .top h1{font-family:var(--head);font-weight:800;font-size:24px;line-height:1;margin:0;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
 .top .grow{flex:1;min-width:0}
 .iconbtn{border:0;background:var(--surface);border-radius:12px;width:40px;height:40px;display:grid;place-items:center;box-shadow:var(--shadow);flex:none}
 .iconbtn svg{width:20px;height:20px}
-.code{display:inline-flex;align-items:center;gap:6px;border:1px dashed var(--ink-3);background:transparent;border-radius:999px;padding:3px 10px;font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:.18em;color:var(--ink-2);margin-top:5px}
-.code small{font-family:var(--body);letter-spacing:0;font-weight:500;font-size:11px;color:var(--ink-3)}
+.code{display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;border-radius:6px;padding:0;font-family:var(--head);font-weight:600;font-size:11.5px;letter-spacing:.12em;color:var(--ink-3);margin-top:4px}
+.code small{font-family:var(--body);letter-spacing:0;font-weight:500;font-size:11px;color:var(--ink-3);opacity:.85}
 .catgroup{margin-top:16px}
 .catgroup:first-child{margin-top:0}
 .catlabel{display:flex;align-items:center;gap:8px;font-family:var(--head);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
@@ -247,6 +250,37 @@ table.heat td.dn{text-align:left;font-weight:600;white-space:nowrap;padding-inli
   .sheet{animation:up .22s ease-out}
   @keyframes up{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
 }
+/* torneos */
+.bracket{display:flex;gap:10px;overflow-x:auto;margin-inline:-4px;padding:2px 4px 6px}
+.bcol{display:flex;flex-direction:column;justify-content:space-around;gap:8px;min-width:102px;flex:1}
+.bcol .eyebrow{font-size:11px}
+.bm{display:flex;flex-direction:column;gap:2px;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 8px;text-align:left;font-size:13px;font-weight:600;width:100%;min-width:0}
+.bm span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bm .w{font-weight:800;color:var(--ink)}
+.bm .w::after{content:" ✓";color:var(--good)}
+.bm .l{color:var(--ink-3);font-weight:500;text-decoration:line-through}
+.bm.pend{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.bm:disabled{cursor:default;opacity:.75}
+.bm.bye{border-style:dashed}
+.bm.bye .small{white-space:normal;font-size:11.5px}
+.bm.row1{flex-direction:row;justify-content:space-between;gap:6px;align-items:center}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+table.lt{width:100%;border-collapse:collapse;font-size:13.5px}
+table.lt th{font-size:11.5px;color:var(--ink-3);font-weight:700;text-align:center;padding:4px}
+table.lt td{text-align:center;padding:7px 4px;border-top:1px solid var(--line)}
+table.lt td.n{text-align:left;font-weight:700}
+/* pozo */
+.pz{font-family:var(--display);font-size:44px;line-height:.9}
+.pz small{font-family:var(--head);font-size:13px;letter-spacing:.12em;color:var(--ink-3);margin-left:6px;text-transform:uppercase;font-weight:700}
+.sl{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.sl:first-child{border-top:0}
+.sl .nm{display:flex;align-items:center;gap:8px;font-weight:600}
+.vpos{color:var(--good);font-weight:800}
+.vneg{color:var(--bad);font-weight:800}
+/* tanteador sets */
+.setdots{display:flex;gap:6px;justify-content:center;min-height:14px}
+.setdots i{width:13px;height:13px;border-radius:50%;background:var(--surface-3)}
+.setdots i.on{background:var(--good)}
 @media (min-width:520px){ .tiles{grid-template-columns:repeat(4,1fr)} }
 </style>
 </head>
@@ -267,7 +301,7 @@ const CATALOGO = [
   ["Counter-Strike 2","esp"],["EA FC","esp"],["Rocket League","esp"],["Mario Kart","esp"],["Fortnite","esp"],["Valorant","esp"],
   ["Bowling","otro"],["Karting","otro"],["Trivia","otro"],["Pesca","otro"]
 ];
-const MAX_JUG = 8;
+const MAX_JUG = 10;
 const DEF_PUNTAJE = { podio: [3, 2, 1], ganador: 3, empate: 1 };
 const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const DEMO = "DEMO";
@@ -281,7 +315,7 @@ const DIA = ["dom","lun","mar","mié","jue","vie","sáb"];
 const fD = iso => { const d = new Date(iso + "T12:00:00"); return { d: d.getDate(), m: MES[d.getMonth()], w: DIA[d.getDay()] }; };
 const fCorta = iso => { const x = fD(iso); return `${x.d} ${x.m}`; };
 const diasHasta = iso => Math.round((new Date(iso + "T12:00:00") - new Date(hoyISO() + "T12:00:00")) / 864e5);
-const colorOf = i => `var(--s${(i % 8) + 1})`;
+const colorOf = i => `var(--s${(i % 10) + 1})`;
 const lsGet = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
 const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
 
@@ -312,14 +346,18 @@ function demoData() {
   eq("d0", -3, ["j3","j4"], ["j0","j2"], "B");
   pod("d6", -3, ["j4","j0","j1"], ["j2","j3"]);
   eq("d7", -1, ["j1"], ["j3"], "A");
+  P[5].apuesta = 20; P[8].apuesta = 50;
+  const T = { id: "t1", disc: "d1", formato: "elim", jugadores: ["j0","j1","j2","j3","j4"], estado: "jugando", creado: 1, fecha: h,
+    r0: [{ a: "j0", b: null }, { a: "j1", b: "j2" }, { a: "j3", b: null }, { a: "j4", b: null }], res: { "0-1": "j2" } };
   const F = [
     { id: uid(), fecha: addDays(h, 3), hora: "20:30", lugar: "Casa de Fede (tiene mesa de ping-pong)", discs: ["d8","d9"], nota: "Llevar paletas" },
     { id: uid(), fecha: addDays(h, 10), hora: "18:00", lugar: "Club del barrio", discs: ["d2","d5"], nota: "" }
   ];
   return {
-    sala: { nombre: "Olimpíadas del Barrio", creada: Date.now(), jugadores: J, disciplinas: D, puntaje: DEF_PUNTAJE },
+    sala: { nombre: "Olimpíadas del Barrio", creada: Date.now(), jugadores: J, disciplinas: D, puntaje: DEF_PUNTAJE, pozo: { activo: true, entrada: 100, reparto: [60, 30, 10] } },
     partidos: Object.fromEntries(P.map(p => [p.id, p])),
-    fechas: Object.fromEntries(F.map(f => [f.id, f]))
+    fechas: Object.fromEntries(F.map(f => [f.id, f])),
+    torneos: { t1: T }
   };
 }
 
@@ -395,17 +433,18 @@ const backend = {
   },
   watch(code, cb) {
     if (isLocal(code)) {
-      const fn = () => { const L = LOCAL[code]; cb({ sala: L.sala, partidos: Object.values(L.partidos || {}), fechas: Object.values(L.fechas || {}) }); };
+      const fn = () => { const L = LOCAL[code]; cb({ sala: L.sala, partidos: Object.values(L.partidos || {}), fechas: Object.values(L.fechas || {}), torneos: Object.values(L.torneos || {}) }); };
       (localListeners[code] ||= []).push(fn); fn();
       return () => { localListeners[code] = (localListeners[code] || []).filter(f => f !== fn); };
     }
-    const cur = { sala: null, partidos: [], fechas: [] }; let got = 0;
+    const cur = { sala: null, partidos: [], fechas: [], torneos: [] };
     const push = () => { if (cur.sala) cb({ ...cur }); };
     const onErr = e => toast(e && e.code === "revoked" ? "Perdiste acceso a esta sala" : "Problema de conexión, reintentando…");
     const u1 = DB.doc("salas/" + code).onSnapshot(s => { cur.sala = s.exists ? s.data() : null; if (!s.exists) cb({ missing: true }); else push(); }, onErr);
     const u2 = DB.collection("salas/" + code + "/partidos").onSnapshot(q => { cur.partidos = q.docs.map(d => ({ id: d.id, ...d.data() })); push(); }, onErr);
     const u3 = DB.collection("salas/" + code + "/fechas").onSnapshot(q => { cur.fechas = q.docs.map(d => ({ id: d.id, ...d.data() })); push(); }, onErr);
-    return () => { u1(); u2(); u3(); };
+    const u4 = DB.collection("salas/" + code + "/torneos").onSnapshot(q => { cur.torneos = q.docs.map(d => ({ id: d.id, ...d.data() })); push(); }, onErr);
+    return () => { u1(); u2(); u3(); u4(); };
   },
   async saveSala(code, sala) {
     if (isLocal(code)) { LOCAL[code].sala = sala; saveLocal(); emitLocal(code); return; }
@@ -417,7 +456,7 @@ const backend = {
     await DB.doc(`salas/${code}/${col}/${id}`).set(rest);
   },
   async del(code, col, id) {
-    if (isLocal(code)) { delete LOCAL[code][col][id]; saveLocal(); emitLocal(code); return; }
+    if (isLocal(code)) { delete (LOCAL[code][col] || {})[id]; saveLocal(); emitLocal(code); return; }
     await DB.doc(`salas/${code}/${col}/${id}`).delete();
   },
   async create(sala) {
@@ -430,7 +469,7 @@ const backend = {
         await db.doc("salas/" + code).set(sala); return code;
       } else {
         if (LOCAL[code]) continue;
-        LOCAL[code] = { sala, partidos: {}, fechas: {} }; saveLocal(); return code;
+        LOCAL[code] = { sala, partidos: {}, fechas: {}, torneos: {} }; saveLocal(); return code;
       }
     }
     throw new Error("sin código");
@@ -446,8 +485,9 @@ const writeErr = e => {
 const S = {
   view: "home", code: null, data: null, tab: lsGet("oea_tab", "tabla"), unsub: null,
   recientes: lsGet("oea_recientes", []),
-  tant: lsGet("oea_tant", { modo: "truco", a: 0, b: 0, max: 30, na: "Nosotros", nb: "Ellos", libre: {} })
+  tant: null
 };
+S.tant = migrarTant(lsGet("oea_tant", null));
 const app = document.getElementById("app");
 const tabsEl = document.getElementById("tabs");
 const layer = document.getElementById("layer");
@@ -478,14 +518,20 @@ let pendingRender = false;
 function renderQuiet() { pendingRender = true; }
 
 /* ============ cálculos ============ */
+const enPodio = (p, id) => {
+  if (p.tipo === "podio") { const i = (p.orden || []).indexOf(id); return i > -1 && i < 3; }
+  if (p.tipo === "torneo") return (p.orden || []).includes(id);
+  if (p.tipo === "equipos" && p.ordenEq) return p.ordenEq.slice(0, 3).some(k => (p.equipos[k] || []).includes(id));
+  return false;
+};
 function calc(d) {
   const J = d.sala.jugadores, Dm = Object.fromEntries(d.sala.disciplinas.map(x => [x.id, x]));
   const P = [...d.partidos].sort((a, b) => a.fecha.localeCompare(b.fecha) || (a.creado || 0) - (b.creado || 0));
   const st = Object.fromEntries(J.map(j => [j.id, { id: j.id, pts: 0, pj: 0, gan: 0, pod: 0, form: [], porDisc: {}, racha: 0 }]));
   const serie = Object.fromEntries(J.map(j => [j.id, [0]]));
   const ganadores = p => {
-    if (p.tipo === "podio") return p.orden && p.orden[0] ? [p.orden[0]] : [];
-    if (p.tipo === "equipos") return p.gana === "E" ? [] : (p.equipos[p.gana] || []);
+    if (p.tipo === "podio" || p.tipo === "torneo") return p.orden && p.orden[0] ? [p.orden[0]] : [];
+    if (p.tipo === "equipos") { if (p.ordenEq) return p.equipos[p.ordenEq[0]] || []; return p.gana === "E" ? [] : (p.equipos[p.gana] || []); }
     const vals = Object.values(p.pts); const mx = Math.max(...vals);
     return mx > 0 ? Object.keys(p.pts).filter(k => p.pts[k] === mx) : [];
   };
@@ -496,7 +542,7 @@ function calc(d) {
       const v = +p.pts[id] || 0;
       s.pts += v; s.pj++; s.porDisc[p.disc] = (s.porDisc[p.disc] || 0) + v;
       const w = g.includes(id);
-      const podio = w || (p.tipo === "podio" && p.orden.indexOf(id) > -1 && p.orden.indexOf(id) < 3);
+      const podio = w || enPodio(p, id);
       if (w) s.gan++; if (podio) s.pod++;
       s.form.push(w ? "w" : podio ? "p" : "");
       s.racha = w ? s.racha + 1 : 0;
@@ -512,7 +558,7 @@ function calc(d) {
 }
 
 /* ============ marca ============ */
-const WOLF = '<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><polygon points="13,3 18,19 24,15 30,19 35,3 44,23 37,37 24,47 11,37 4,23" fill="currentColor"/></svg>';
+const WOLF = '<img src="logo.png" alt="" width="256" height="256">';
 
 /* ============ íconos ============ */
 const I = {
@@ -548,7 +594,7 @@ function vHeader() {
   return `<header class="top">
     <button class="brandmark" data-a="home" aria-label="Mis salas">${WOLF}</button>
     <div class="grow"><h1>${esc(s.nombre)}</h1>
-      ${S.code === DEMO ? `<span class="code">DEMO <small>ejemplo</small></span>` : `<button class="code" data-a="copiar" aria-label="Copiar código">${esc(S.code)} <small>${isLocal(S.code) ? "solo este equipo" : "tocar para copiar"}</small></button>`}
+      ${S.code === DEMO ? `<span class="code">Código DEMO <small>· ejemplo</small></span>` : `<button class="code" data-a="copiar" aria-label="Copiar código ${esc(S.code)}">Código ${esc(S.code)} <small>· ${isLocal(S.code) ? "solo este equipo" : "copiar"}</small></button>`}
     </div>
     <button class="iconbtn" data-a="ajustes" aria-label="Ajustes de la sala">${I.gear}</button>
   </header>`;
@@ -623,7 +669,7 @@ function bindHome() {
 /* ---------- TABLA ---------- */
 function vTabla(C) {
   const s = S.data.sala, t = C.tabla;
-  if (!C.P.length) return `<div class="card empty"><h2 style="color:var(--ink)">Todavía no hay puntos</h2><p>Cargá el primer resultado con el botón de abajo y la tabla se arma sola.</p></div>`;
+  if (!C.P.length) return `<div class="stack">${bannerTorneo(C)}<div class="card empty"><h2 style="color:var(--ink)">Todavía no hay puntos</h2><p>Cargá el primer resultado con el botón de abajo y la tabla se arma sola.</p></div>${vPozo(C)}</div>`;
   const L = t[0];
   const empLider = t.filter(r => r.pos === 1).length > 1;
   const total = s.disciplinas.length, hechas = [...C.jugadas].length;
@@ -634,6 +680,7 @@ function vTabla(C) {
         <div class="form" aria-label="Últimos resultados">${r.form.slice(-6).map(f => `<i class="${f}"></i>`).join("")}</div></div>
       <div class="pts num">${r.pts}<small>PTS</small></div></div>`).join("");
   return `<div class="stack">
+    ${bannerTorneo(C)}
     <div class="lead">
       <div><div class="l1">${empLider ? "Punteros empatados" : "Va primero"}</div><div class="l2">${esc(empLider ? t.filter(r => r.pos === 1).map(r => r.nombre).join(" / ") : L.nombre)}</div></div>
       <div class="big num">${L.pts}<small>PUNTOS</small></div>
@@ -645,6 +692,7 @@ function vTabla(C) {
       <div class="rank">${rows}</div>
       <p class="muted small" style="margin:10px 0 0">Barritas: <span style="color:var(--good);font-weight:700">verde</span> ganó · <span style="color:var(--gold);font-weight:700">dorado</span> podio · gris sin puntos. Últimos 6 partidos.</p>
     </section>
+    ${vPozo(C)}
     <section class="card">
       <h2 style="margin-bottom:4px">Evolución</h2>
       <p class="muted small" style="margin:0 0 10px">Puntos acumulados partido a partido. Tocá el gráfico para ver cada momento.</p>
@@ -727,22 +775,209 @@ function drawChart(C) {
 /* ---------- PARTIDOS ---------- */
 function vPartidos(C) {
   const J = Object.fromEntries(S.data.sala.jugadores.map((j, i) => [j.id, { ...j, i }]));
-  if (!C.P.length) return `<div class="card empty"><h2 style="color:var(--ink)">Sin partidos todavía</h2><p>Cada resultado que cargues aparece acá, del más nuevo al más viejo.</p></div>`;
+  const nmJ = id => esc(J[id]?.nombre || "?");
+  const torneos = vTorneos(C);
+  if (!C.P.length) return `<div class="stack">${torneos}<div class="card empty"><h2 style="color:var(--ink)">Sin partidos todavía</h2><p>Cada resultado que cargues aparece acá, del más nuevo al más viejo.</p></div></div>`;
   const items = [...C.P].reverse().map(p => {
     const f = fD(p.fecha), d = C.Dm[p.disc];
-    let det = "";
+    let det = "", tipo = "";
     if (p.tipo === "equipos") {
-      const tn = k => p.equipos[k].map(id => esc(J[id]?.nombre || "?")).join(" + ");
-      det = `<div class="small" style="margin-top:4px">${p.gana === "A" ? "<b>" + tn("A") + "</b>" : tn("A")} <span class="muted">vs</span> ${p.gana === "B" ? "<b>" + tn("B") + "</b>" : tn("B")}${p.gana === "E" ? ' <span class="tag">empate</span>' : ""}</div>`;
-    }
+      const keys = Object.keys(p.equipos || {}).sort();
+      const winKey = p.ordenEq ? p.ordenEq[0] : p.gana;
+      const tn = k => (p.equipos[k] || []).map(nmJ).join(" + ");
+      det = `<div class="small" style="margin-top:4px">${keys.map(k => k === winKey ? "<b>" + tn(k) + "</b>" : tn(k)).join(' <span class="muted">vs</span> ')}${p.gana === "E" ? ' <span class="tag">empate</span>' : ""}</div>`;
+      tipo = keys.length > 2 ? keys.length + " equipos" : (keys.every(k => (p.equipos[k] || []).length === 1) ? "1 vs 1" : "Equipos");
+    } else if (p.tipo === "torneo") {
+      det = `<div class="small" style="margin-top:4px">Campeón <b>${nmJ(p.orden[0])}</b>${p.orden[1] ? " · 2° " + nmJ(p.orden[1]) : ""}</div>`;
+      tipo = "Torneo";
+    } else tipo = { podio: "Podio", libre: "Puntos a mano" }[p.tipo] || "";
     const orden = Object.entries(p.pts).sort((a, b) => b[1] - a[1]);
-    const res = orden.map(([id, v]) => `<span class="${v ? "" : "z"}"><i class="dot" style="background:${J[id] ? colorOf(J[id].i) : "var(--ink-3)"}"></i>${esc(J[id]?.nombre || "?")} <span class="pp">${v ? "+" + v : "0"}</span></span>`).join("");
-    const tipo = { podio: "Podio", equipos: p.equipos && p.equipos.A.length === 1 && p.equipos.B.length === 1 ? "1 vs 1" : "Equipos", libre: "Puntos a mano" }[p.tipo];
+    const res = orden.map(([id, v]) => `<span class="${v ? "" : "z"}"><i class="dot" style="background:${J[id] ? colorOf(J[id].i) : "var(--ink-3)"}"></i>${nmJ(id)} <span class="pp">${v ? "+" + v : "0"}</span></span>`).join("");
     return `<div class="match"><div class="mdate"><b>${f.d}</b><span>${f.m}</span></div>
-      <div class="mbody"><div class="mt">${esc(d ? d.nombre : "Disciplina borrada")} <span class="tag">${tipo}</span></div>${det}<div class="res">${res}</div>
+      <div class="mbody"><div class="mt">${esc(d ? d.nombre : "Disciplina borrada")} <span class="tag">${tipo}</span>${p.apuesta ? `<span class="tag">${p.apuesta} aguaritos c/u</span>` : ""}</div>${det}<div class="res">${res}</div>
       <div id="cf-${p.id}"><button class="btn ghost small" data-delp="${p.id}" style="padding-left:0;margin-top:2px">Borrar</button></div></div></div>`;
   }).join("");
-  return `<section class="card"><div class="row" style="justify-content:space-between;margin-bottom:4px"><h2>Partidos</h2><span class="muted small num">${C.P.length} en total</span></div>${items}</section>`;
+  return `<div class="stack">${torneos}<section class="card"><div class="row" style="justify-content:space-between;margin-bottom:4px"><h2>Partidos</h2><span class="muted small num">${C.P.length} en total</span></div>${items}</section></div>`;
+}
+
+/* ---------- TORNEOS ---------- */
+const shuffle = arr => { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function armarTorneo(disc, ids, formato) {
+  const t = { id: uid(), disc, formato, jugadores: [...ids], res: {}, estado: "jugando", creado: Date.now(), fecha: hoyISO() };
+  if (formato === "elim") {
+    const p = shuffle(ids); let size = 2; while (size < p.length) size *= 2;
+    const m = []; for (let k = 0, byes = size - p.length; k < byes; k++) m.push({ a: p.shift(), b: null });
+    while (p.length) m.push({ a: p.shift(), b: p.shift() });
+    t.r0 = shuffle(m);
+  } else t.orden = shuffle(ids);
+  return t;
+}
+function rondasElim(t) {
+  let prev = t.r0.map((m, k) => { const key = "0-" + k; const bye = m.b == null; return { key, a: m.a, b: m.b, bye, w: bye ? m.a : ([m.a, m.b].includes(t.res[key]) ? t.res[key] : null) }; });
+  const R = [prev];
+  for (let r = 1; prev.length > 1; r++) {
+    const cur = [];
+    for (let k = 0; k < prev.length / 2; k++) {
+      const a = prev[2 * k].w, b = prev[2 * k + 1].w, key = r + "-" + k;
+      cur.push({ key, a, b, w: a && b && [a, b].includes(t.res[key]) ? t.res[key] : null });
+    }
+    R.push(cur); prev = cur;
+  }
+  return R;
+}
+const nombreRonda = (i, n) => { const f = n - i; return f === 1 ? "Final" : f === 2 ? "Semifinal" : f === 3 ? "Cuartos" : f === 4 ? "Octavos" : "Ronda " + (i + 1); };
+function fixtureLiga(t) {
+  const p = [...t.orden]; if (p.length % 2) p.push(null);
+  const n = p.length, F = [];
+  for (let r = 0; r < n - 1; r++) {
+    const ms = [];
+    for (let i = 0; i < n / 2; i++) {
+      const a = p[i], b = p[n - 1 - i];
+      if (a && b) { const key = [a, b].sort().join("~"), v = t.res[key]; ms.push({ key, a, b, w: v === "E" || v === a || v === b ? v : null }); }
+    }
+    F.push(ms); p.splice(1, 0, p.pop());
+  }
+  return F;
+}
+function tablaLiga(t) {
+  const st = Object.fromEntries(t.jugadores.map(id => [id, { id, pts: 0, pj: 0, g: 0, e: 0, p: 0 }]));
+  fixtureLiga(t).flat().forEach(m => {
+    if (!m.w) return; const A = st[m.a], B = st[m.b]; A.pj++; B.pj++;
+    if (m.w === "E") { A.e++; B.e++; A.pts++; B.pts++; }
+    else { const W = m.w === m.a ? A : B, L = m.w === m.a ? B : A; W.g++; W.pts += 3; L.p++; }
+  });
+  return Object.values(st).sort((x, y) => y.pts - x.pts || y.g - x.g || x.p - y.p);
+}
+function estadoTorneo(t) {
+  if (t.formato === "elim") {
+    const R = rondasElim(t), fin = R[R.length - 1][0];
+    if (!fin.w) return { listo: false, R };
+    const seg = fin.w === fin.a ? fin.b : fin.a;
+    const semi = R.length >= 2 ? R[R.length - 2].map(m => m.bye ? null : (m.w === m.a ? m.b : m.a)).filter(Boolean) : [];
+    return { listo: true, R, podio: [[fin.w], [seg], semi] };
+  }
+  const F = fixtureLiga(t), all = F.flat(), T = tablaLiga(t);
+  return { listo: all.length > 0 && all.every(m => m.w), F, T, jug: all.filter(m => m.w).length, tot: all.length, podio: [0, 1, 2].map(i => T[i] ? [T[i].id] : []) };
+}
+function bannerTorneo(C) {
+  const T = (S.data.torneos || []).filter(t => t.estado !== "terminado");
+  if (!T.length) return "";
+  const nombres = T.map(t => esc(C.Dm[t.disc]?.nombre || "torneo")).join(", ");
+  return `<div class="banner" style="margin-bottom:0"><div><b>Torneo en juego:</b> ${nombres}</div><button class="btn primary" data-a="verTorneo">Ver cuadro</button></div>`;
+}
+function vTorneos(C) {
+  const TT = (S.data.torneos || []).filter(t => t.estado !== "terminado").sort((a, b) => (a.creado || 0) - (b.creado || 0));
+  if (!TT.length) return "";
+  const J = S.data.sala.jugadores;
+  const nm = id => esc(J.find(j => j.id === id)?.nombre || "?");
+  const P = S.data.sala.puntaje || DEF_PUNTAJE;
+  return TT.map(t => {
+    const E = estadoTorneo(t), d = C.Dm[t.disc];
+    const lado = (m, id) => id ? `<span class="${m.w && m.w !== "E" ? (m.w === id ? "w" : "l") : ""}">${nm(id)}</span>` : `<span class="muted">A definir</span>`;
+    let cuerpo = "";
+    if (t.formato === "elim") {
+      cuerpo = `<div class="bracket">${E.R.map((ms, i) => `<div class="bcol"><p class="eyebrow">${nombreRonda(i, E.R.length)}</p>${ms.map(m => {
+        if (m.bye) return `<div class="bm bye"><span class="w">${nm(m.a)}</span><span class="muted small">pasa directo</span></div>`;
+        const jugable = m.a && m.b;
+        return `<button class="bm ${jugable && !m.w ? "pend" : ""}" ${jugable ? `data-tmatch="${t.id}" data-k="${m.key}" aria-label="Cargar ${nm(m.a)} contra ${nm(m.b)}"` : "disabled"}>${lado(m, m.a)}${lado(m, m.b)}</button>`;
+      }).join("")}</div>`).join("")}</div>`;
+    } else {
+      const filas = E.T.map((r, i) => `<tr><td class="num">${i + 1}</td><td class="n">${nm(r.id)}</td><td class="num">${r.pj}</td><td class="num">${r.g}</td><td class="num">${r.e}</td><td class="num">${r.p}</td><td class="num"><b>${r.pts}</b></td></tr>`).join("");
+      const fechas = E.F.map((ms, i) => `<div><p class="eyebrow" style="margin:8px 0 6px">Fecha ${i + 1}</p><div class="lgrid">${ms.map(m => `<button class="bm row1 ${m.w ? "" : "pend"}" data-tmatch="${t.id}" data-k="${m.key}">${lado(m, m.a)}<span class="muted small">${m.w === "E" ? "empate" : "vs"}</span>${lado(m, m.b)}</button>`).join("")}</div></div>`).join("");
+      cuerpo = `<div class="scroll-x"><table class="lt"><thead><tr><th></th><th style="text-align:left">Jugador</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>Pts</th></tr></thead><tbody>${filas}</tbody></table></div>
+        <p class="muted small" style="margin:0">${E.jug} de ${E.tot} partidos jugados · gana 3, empata 1.</p><div>${fechas}</div>`;
+    }
+    const pie = E.listo
+      ? `<div class="banner" style="background:color-mix(in oklab,var(--good) 18%,var(--surface));margin:0"><div><b>¡Campeón ${nm(E.podio[0][0])}!</b> Suma ${P.podio[0] ?? 0} a la tabla; 2° +${P.podio[1] ?? 0}, 3° +${P.podio[2] ?? 0}.</div><button class="btn primary" data-cerrart="${t.id}">Sumar a la tabla</button></div>`
+      : `<p class="muted small" style="margin:0">Tocá un partido para cargar quién ganó. Al terminar suma como un podio: campeón 1°, finalista 2°${t.formato === "elim" ? ", semifinalistas 3°" : ", tercero 3°"}.</p>`;
+    return `<section class="card stack">
+      <div class="row" style="justify-content:space-between;flex-wrap:nowrap;align-items:flex-start"><div><p class="eyebrow">Torneo · ${t.formato === "elim" ? "Eliminación directa" : "Todos contra todos"}</p><h2>${esc(d ? d.nombre : "Torneo")}</h2></div><div id="cf-${t.id}"><button class="btn ghost small" data-cant="${t.id}">Cancelar</button></div></div>
+      ${pie}${cuerpo}</section>`;
+  }).join("");
+}
+function sheetPartidoT(tid, key) {
+  const t = (S.data.torneos || []).find(x => x.id === tid); if (!t) return;
+  const liga = t.formato !== "elim";
+  const m = (liga ? fixtureLiga(t) : rondasElim(t)).flat().find(x => x.key === key);
+  if (!m || !m.a || !m.b) return;
+  let bloqueado = false;
+  if (!liga) { const [r, k] = key.split("-").map(Number); const R = rondasElim(t); const nx = R[r + 1] && R[r + 1][Math.floor(k / 2)]; bloqueado = !!(nx && nx.w); }
+  const J = S.data.sala.jugadores, nm = id => esc(J.find(j => j.id === id)?.nombre || "?");
+  openSheet(`${sheetHead("¿Quién ganó?")}
+    <div class="stack">
+      ${bloqueado ? `<p class="muted small" style="margin:0">Ya se cargó el partido siguiente. Para cambiar este, borrá primero ese resultado.</p>` : ""}
+      <div class="order">
+        <button data-gw="${m.a}" ${bloqueado ? "disabled" : ""} aria-pressed="${m.w === m.a}"><span class="pos ${m.w === m.a ? "p1" : ""}">${m.w === m.a ? "✓" : "–"}</span><span>${nm(m.a)}</span><span></span></button>
+        <button data-gw="${m.b}" ${bloqueado ? "disabled" : ""} aria-pressed="${m.w === m.b}"><span class="pos ${m.w === m.b ? "p1" : ""}">${m.w === m.b ? "✓" : "–"}</span><span>${nm(m.b)}</span><span></span></button>
+        ${liga ? `<button data-gw="E" aria-pressed="${m.w === "E"}"><span class="pos">${m.w === "E" ? "✓" : "="}</span><span>Empate</span><span></span></button>` : ""}
+      </div>
+      ${m.w && !bloqueado ? `<button class="btn ghost" data-gw="">Borrar resultado</button>` : ""}
+    </div>`, sh => {
+    sh.addEventListener("click", async e => {
+      const b = e.target.closest("[data-gw]"); if (!b || b.disabled) return;
+      const res = { ...t.res }; if (b.dataset.gw) res[key] = b.dataset.gw; else delete res[key];
+      b.disabled = true;
+      try { await backend.put(S.code, "torneos", { ...t, res }); closeSheet(); render(); } catch (err) { b.disabled = false; writeErr(err); }
+    });
+  });
+}
+async function cerrarTorneo(tid) {
+  const t = (S.data.torneos || []).find(x => x.id === tid); if (!t) return;
+  const E = estadoTorneo(t); if (!E.listo) return;
+  const P = S.data.sala.puntaje || DEF_PUNTAJE;
+  const pts = Object.fromEntries(t.jugadores.map(id => [id, 0]));
+  E.podio.forEach((g, i) => g.forEach(id => pts[id] = P.podio[i] ?? 0));
+  const rec = { id: uid(), disc: t.disc, fecha: hoyISO(), tipo: "torneo", formato: t.formato, jugadores: t.jugadores, pts, orden: E.podio.flat(), torneo: t.id, creado: Date.now() };
+  await backend.put(S.code, "partidos", rec);
+  await backend.put(S.code, "torneos", { ...t, estado: "terminado", partido: rec.id });
+  S.tab = "tabla"; render(); toast("Torneo sumado a la tabla");
+}
+
+/* ---------- POZO (aguaritos) ---------- */
+function calcPozo(d, C) {
+  const cfg = d.sala.pozo; if (!cfg || !cfg.activo) return null;
+  const J = d.sala.jugadores, saldo = {}, premio = {};
+  J.forEach(j => { saldo[j.id] = 0; premio[j.id] = 0; });
+  const entrada = Math.max(0, Math.round(+cfg.entrada || 0)), reparto = (cfg.reparto || [60, 30, 10]).map(x => Math.max(0, +x || 0));
+  const total = entrada * J.length, sumR = reparto.reduce((a, b) => a + b, 0) || 1;
+  if (total && C.P.length) {
+    const grupos = {}; C.tabla.forEach(r => (grupos[r.pos] ||= []).push(r.id));
+    Object.entries(grupos).forEach(([pos, ids]) => { let sh = 0; for (let k = +pos - 1; k < +pos - 1 + ids.length; k++) sh += reparto[k] || 0; ids.forEach(id => premio[id] = total * sh / sumR / ids.length); });
+    J.forEach(j => saldo[j.id] += premio[j.id] - entrada);
+  }
+  let apostado = 0;
+  C.P.forEach(p => {
+    const a = +p.apuesta || 0; if (!a) return;
+    const jug = (p.jugadores || []).filter(id => id in saldo), g = C.ganadores(p).filter(id => id in saldo);
+    if (!g.length || !jug.length) return;
+    const pot = a * jug.length; apostado += pot;
+    jug.forEach(id => saldo[id] -= a); g.forEach(id => saldo[id] += pot / g.length);
+  });
+  const deb = J.map(j => ({ id: j.id, v: -saldo[j.id] })).filter(x => x.v > 0.5).sort((a, b) => b.v - a.v);
+  const acr = J.map(j => ({ id: j.id, v: saldo[j.id] })).filter(x => x.v > 0.5).sort((a, b) => b.v - a.v);
+  const pagos = []; let i = 0, k = 0;
+  while (i < deb.length && k < acr.length) {
+    const m = Math.min(deb[i].v, acr[k].v); if (m >= 0.5) pagos.push({ de: deb[i].id, a: acr[k].id, v: m });
+    deb[i].v -= m; acr[k].v -= m; if (deb[i].v < 0.5) i++; if (acr[k].v < 0.5) k++;
+  }
+  return { entrada, total, reparto, premio, saldo, pagos, apostado };
+}
+function vPozo(C) {
+  const s = S.data.sala, Z = calcPozo(S.data, C);
+  if (!Z) return `<section class="card row" style="justify-content:space-between;flex-wrap:nowrap"><div><h2>Pozo</h2><p class="muted small" style="margin:4px 0 0">Jueguen por aguaritos, la moneda de la sala. Nada de plata real.</p></div><button class="btn" data-a="ajustes">Activar</button></section>`;
+  const Ji = Object.fromEntries(s.jugadores.map((j, i) => [j.id, { ...j, i }]));
+  const nm = id => esc(Ji[id]?.nombre || "?"), R = n => Math.round(n);
+  const premios = C.tabla.filter(r => Z.premio[r.id] >= 0.5);
+  const saldos = [...s.jugadores].sort((a, b) => Z.saldo[b.id] - Z.saldo[a.id]).map(j => { const v = R(Z.saldo[j.id]);
+    return `<div class="sl"><span class="nm"><i class="dot" style="background:${colorOf(Ji[j.id].i)}"></i>${nm(j.id)}</span><span class="num ${v > 0 ? "vpos" : v < 0 ? "vneg" : "muted"}">${v > 0 ? "+" + v : v}</span></div>`; }).join("");
+  return `<section class="card stack">
+    <div class="row" style="justify-content:space-between;align-items:flex-end;flex-wrap:nowrap"><div><p class="eyebrow">Pozo general</p><div class="pz num">${R(Z.total)}<small>aguaritos</small></div></div>
+      <div class="muted small" style="text-align:right">${Z.entrada} por cabeza<br><span style="white-space:nowrap">reparte ${Z.reparto.join("/")}&nbsp;%</span></div></div>
+    ${premios.length ? `<div><p class="eyebrow" style="margin-bottom:2px">Si terminara hoy</p>${premios.map(r => `<div class="sl"><span class="nm">${r.pos}° ${nm(r.id)}</span><span class="num"><b>${R(Z.premio[r.id])}</b> <span class="muted small">aguaritos</span></span></div>`).join("")}</div>` : ""}
+    <div><p class="eyebrow" style="margin-bottom:2px">Saldo de cada uno</p><p class="muted small" style="margin:0 0 2px">Pozo general${Z.apostado ? ` + apuestas de partidos (${R(Z.apostado)} aguaritos en juego)` : " + apuestas de partidos"}.</p>${saldos}</div>
+    <div><p class="eyebrow" style="margin-bottom:2px">Quién le paga a quién</p>${Z.pagos.length ? Z.pagos.map(x => `<div class="sl"><span>${nm(x.de)} <span class="muted">→</span> ${nm(x.a)}</span><span class="num"><b>${R(x.v)}</b> <span class="muted small">aguaritos</span></span></div>`).join("") : `<p class="muted small" style="margin:4px 0 0">Por ahora están todos a mano.</p>`}</div>
+    <p class="muted small" style="margin:0">Los aguaritos no son plata: la app no cobra ni mueve dinero. Cómo arreglan al final queda entre ustedes.</p>
+  </section>`;
 }
 
 /* ---------- FECHAS ---------- */
@@ -811,28 +1046,66 @@ function fosforo(n) {
   return `<svg viewBox="0 0 36 36" aria-hidden="true">${L.slice(0, n).map(l => `<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}"/>`).join("")}</svg>`;
 }
 function grupoF(v) { let h = ""; for (let i = 0; i < Math.ceil(v / 5); i++) h += fosforo(Math.min(5, v - i * 5)); return h; }
+function TANT_DEF() { return { tipo: "palitos", na: "Nosotros", nb: "Ellos", pal: { a: 0, b: 0, max: 30 }, sets: { a: 0, b: 0, sa: 0, sb: 0, obj: 11, mejor: 3, hist: [] }, ron: [], ronMenos: false, cnt: {} }; }
+function migrarTant(t) {
+  const d = TANT_DEF();
+  if (!t || typeof t !== "object") return d;
+  if (t.tipo) return { ...d, ...t, pal: { ...d.pal, ...(t.pal || {}) }, sets: { ...d.sets, ...(t.sets || {}) }, ron: Array.isArray(t.ron) ? t.ron : [], cnt: t.cnt || {} };
+  return { ...d, tipo: t.modo === "libre" ? "contador" : "palitos", na: t.na || d.na, nb: t.nb || d.nb, pal: { a: t.a || 0, b: t.b || 0, max: t.max === 15 ? 15 : 30 }, cnt: t.libre || {} };
+}
+const TIPOS_T = [["palitos", "Palitos"], ["sets", "Sets"], ["rondas", "Rondas"], ["contador", "Contador"]];
+const ganoTant = T => T.tipo === "palitos" ? (T.pal.a >= T.pal.max ? "a" : T.pal.b >= T.pal.max ? "b" : "")
+  : T.tipo === "sets" ? (() => { const need = Math.floor(T.sets.mejor / 2) + 1; return T.sets.sa >= need ? "a" : T.sets.sb >= need ? "b" : ""; })() : "";
 function vTanteador() {
   const T = S.tant, J = S.data.sala.jugadores;
-  const seg = `<div class="seg" style="margin-bottom:12px"><button data-tm="truco" aria-pressed="${T.modo === "truco"}">Truco</button><button data-tm="libre" aria-pressed="${T.modo === "libre"}">Contador libre</button></div>`;
-  if (T.modo === "libre") {
-    return seg + `<section class="card"><div class="row" style="justify-content:space-between;margin-bottom:4px"><h2>Contador</h2><button class="btn ghost" data-a="resetLibre">Poner en cero</button></div>
-      <p class="muted small" style="margin:0 0 6px">Para dardos, generala, bowling o lo que sea. Después cargás el resultado final.</p>
+  const seg = `<div class="seg" style="margin-bottom:12px">${TIPOS_T.map(([k, l]) => `<button data-tt="${k}" aria-pressed="${T.tipo === k}">${l}</button>`).join("")}</div>`;
+  const nombreLado = k => `<input id="tn-${k}" value="${esc(k === "a" ? T.na : T.nb)}" maxlength="14" aria-label="Nombre del lado">`;
+  const win = ganoTant(T);
+  const bannerWin = win ? `<div class="banner" style="background:color-mix(in oklab,var(--good) 18%,var(--surface));margin:0"><div><b>¡Ganó ${esc(win === "a" ? T.na : T.nb)}!</b> Cargalo en la tabla.</div><button class="btn primary" data-a="cargarT">Cargar resultado</button></div>` : "";
+  if (T.tipo === "contador") {
+    const hay = J.some(j => (T.cnt[j.id] || 0) !== 0);
+    return seg + `<section class="card"><div class="row" style="justify-content:space-between;margin-bottom:4px"><h2>Contador</h2><button class="btn ghost" data-a="resetCnt">Poner en cero</button></div>
+      <p class="muted small" style="margin:0 0 6px">Suma o resta de a uno para cada jugador.</p>
       <div class="counters">${J.map((j, i) => `<div class="ctr"><div class="nm" style="font-weight:700;display:flex;gap:8px;align-items:center"><i class="dot" style="background:${colorOf(i)}"></i>${esc(j.nombre)}</div>
-        <button class="btn" data-lc="${j.id}" data-d="-1" aria-label="Restar a ${esc(j.nombre)}">−</button><div class="v num">${T.libre[j.id] || 0}</div><button class="btn primary" data-lc="${j.id}" data-d="1" aria-label="Sumar a ${esc(j.nombre)}">+</button></div>`).join("")}</div></section>`;
+        <button class="btn" data-lc="${j.id}" data-d="-1" aria-label="Restar a ${esc(j.nombre)}">−</button><div class="v num">${T.cnt[j.id] || 0}</div><button class="btn primary" data-lc="${j.id}" data-d="1" aria-label="Sumar a ${esc(j.nombre)}">+</button></div>`).join("")}</div>
+      ${hay ? `<button class="btn block" data-a="cargarT" style="margin-top:10px">Cargar como resultado</button>` : ""}</section>`;
   }
-  const half = T.max / 2;
-  const fos = v => T.max === 30 ? `<div class="fosforos"><div class="half">${grupoF(Math.min(v, half))}</div><div class="sep"></div><div class="half">${grupoF(Math.max(0, v - half))}</div></div>` : `<div class="fosforos"><div class="half">${grupoF(v)}</div></div>`;
-  const win = T.a >= T.max ? "a" : T.b >= T.max ? "b" : "";
-  const team = k => { const v = T[k]; const nm = k === "a" ? T.na : T.nb;
-    const etapa = T.max === 30 ? (v >= half ? "buenas" : "malas") : "";
-    return `<div class="team ${win === k ? "win" : ""}"><input id="tn-${k}" value="${esc(nm)}" maxlength="14" aria-label="Nombre del equipo">
-      <div class="tv num">${v}<small>${etapa ? `${etapa}${T.max === 30 ? " · " + (v >= half ? v - half : v) : ""}` : "&nbsp;"}</small></div>${fos(v)}
-      <div class="ctrl"><button class="btn" data-tc="${k}" data-d="-1" aria-label="Restar">−</button><button class="btn primary" data-tc="${k}" data-d="1" aria-label="Sumar">+1</button></div></div>`; };
+  if (T.tipo === "rondas") {
+    const R = T.ron;
+    const tot = Object.fromEntries(J.map(j => [j.id, R.reduce((s, r) => s + (+r[j.id] || 0), 0)]));
+    const ord = J.map((j, i) => ({ ...j, i, t: tot[j.id] })).sort((a, b) => T.ronMenos ? a.t - b.t : b.t - a.t);
+    return seg + `<div class="stack"><section class="card stack"><div class="row" style="justify-content:space-between"><h2>Rondas</h2><span class="muted small num">${R.length} ${R.length === 1 ? "ronda" : "rondas"}</span></div>
+      <p class="muted small" style="margin:0">Anotá lo que hizo cada uno en la ronda y tocá "Sumar ronda". La app lleva el total.</p>
+      <div class="teamsel">${J.map((j, i) => `<div class="tr"><label for="rin-${j.id}" style="font-weight:600;display:flex;gap:8px;align-items:center"><i class="dot" style="background:${colorOf(i)}"></i>${esc(j.nombre)}</label><input class="input num" type="number" inputmode="numeric" id="rin-${j.id}" data-rin="${j.id}" placeholder="0" style="width:90px;text-align:center"></div>`).join("")}</div>
+      <button class="btn primary block" data-a="sumarRonda">Sumar ronda ${R.length + 1}</button></section>
+      ${R.length ? `<section class="card stack"><div class="row" style="justify-content:space-between"><h2>Totales</h2><div class="seg"><button data-rmenos="0" aria-pressed="${!T.ronMenos}">Gana el que más</button><button data-rmenos="1" aria-pressed="${!!T.ronMenos}">Gana el que menos</button></div></div>
+        <div class="rank">${ord.map((r, pos) => `<div class="rk"><div class="pos ${pos < 3 ? "p" + (pos + 1) : ""}">${pos + 1}</div><div class="who"><div class="nm"><i class="dot" style="background:${colorOf(r.i)}"></i><span>${esc(r.nombre)}</span></div><div class="meta num">${R.slice(-6).map(x => x[r.id] ?? "–").join(" · ")}</div></div><div class="pts num">${r.t}</div></div>`).join("")}</div>
+        <div class="row"><button class="btn primary" data-a="cargarT">Cargar como resultado</button><button class="btn ghost" data-a="undoRonda">Deshacer última</button><button class="btn ghost" data-a="resetRon">Empezar de nuevo</button></div></section>` : ""}</div>`;
+  }
+  if (T.tipo === "sets") {
+    const X = T.sets, need = Math.floor(X.mejor / 2) + 1;
+    const lado = k => { const sv = k === "a" ? X.sa : X.sb;
+      return `<div class="team ${win === k ? "win" : ""}">${nombreLado(k)}<div class="tv num">${X[k]}<small>${sv} ${sv === 1 ? "set" : "sets"}</small></div>
+        <div class="setdots">${Array.from({ length: need }, (_, i) => `<i class="${i < sv ? "on" : ""}"></i>`).join("")}</div>
+        <div class="ctrl"><button class="btn" data-sc="${k}" data-d="-1" aria-label="Restar">−</button><button class="btn primary" data-sc="${k}" data-d="1" aria-label="Sumar" ${win ? "disabled" : ""}>+1</button></div></div>`; };
+    return seg + `<div class="stack">
+      <div class="row" style="justify-content:space-between"><div class="seg">${[11, 15, 21, 25].map(m => `<button data-sobj="${m}" aria-pressed="${X.obj === m}">A ${m}</button>`).join("")}</div><button class="btn ghost" data-a="resetSets">Nuevo partido</button></div>
+      <div class="seg">${[[1, "Un set"], [3, "Mejor de 3"], [5, "Mejor de 5"]].map(([m, l]) => `<button data-smej="${m}" aria-pressed="${X.mejor === m}">${l}</button>`).join("")}</div>
+      ${bannerWin}
+      <div class="score">${lado("a")}${lado("b")}</div>
+      ${X.hist.length ? `<p class="small" style="margin:0;text-align:center">Sets: <b class="num">${X.hist.join(" · ")}</b></p>` : ""}
+      <p class="muted small" style="margin:0;text-align:center">Cada set se gana llegando a ${X.obj} con 2 de diferencia. El set se anota solo.</p>
+    </div>`;
+  }
+  const X = T.pal, half = X.max / 2, partir = X.max >= 30;
+  const fos = v => partir ? `<div class="fosforos"><div class="half">${grupoF(Math.min(v, half))}</div><div class="sep"></div><div class="half">${grupoF(Math.max(0, v - half))}</div></div>` : `<div class="fosforos"><div class="half">${grupoF(v)}</div></div>`;
+  const lado = k => `<div class="team ${win === k ? "win" : ""}">${nombreLado(k)}<div class="tv num">${X[k]}<small>${win === k ? "ganó" : "faltan " + (X.max - X[k])}</small></div>${fos(X[k])}
+    <div class="ctrl"><button class="btn" data-pc="${k}" data-d="-1" aria-label="Restar">−</button><button class="btn primary" data-pc="${k}" data-d="1" aria-label="Sumar">+1</button></div></div>`;
   return seg + `<div class="stack">
-    <div class="row" style="justify-content:space-between"><div class="seg"><button data-tmax="30" aria-pressed="${T.max === 30}">A 30</button><button data-tmax="15" aria-pressed="${T.max === 15}">A 15</button></div><button class="btn ghost" data-a="resetTruco">Nuevo partido</button></div>
-    ${win ? `<div class="banner" style="background:color-mix(in oklab,var(--good) 18%,var(--surface))"><div><b>¡Ganó ${esc(win === "a" ? T.na : T.nb)}!</b> Cargalo en la tabla.</div><button class="btn primary" data-a="cargarTruco">Cargar resultado</button></div>` : ""}
-    <div class="score">${team("a")}${team("b")}</div>
-    <p class="muted small" style="margin:0;text-align:center">Se cuenta con fosforitos: cada cuadrado cerrado con la diagonal son 5 puntos.</p>
+    <div class="row" style="justify-content:space-between"><div class="seg">${[15, 30, 40].map(m => `<button data-pmax="${m}" aria-pressed="${X.max === m}">A ${m}</button>`).join("")}</div><button class="btn ghost" data-a="resetPal">Nuevo partido</button></div>
+    ${bannerWin}
+    <div class="score">${lado("a")}${lado("b")}</div>
+    <p class="muted small" style="margin:0;text-align:center">Dos lados que suman de a uno hasta llegar al número. Cada cuadrado cerrado con la diagonal son 5.</p>
   </div>`;
 }
 const saveTant = () => lsSet("oea_tant", S.tant);
@@ -855,22 +1128,39 @@ const sheetHead = t => `<header><h2>${t}</h2><button class="iconbtn" data-close 
 /* ---------- cargar resultado ---------- */
 function sheetResultado(pre = {}) {
   const s = S.data.sala, J = s.jugadores, P = s.puntaje || DEF_PUNTAJE;
+  const pozoOn = !!(s.pozo && s.pozo.activo);
   let discs = [...s.disciplinas];
-  const F = { disc: pre.disc || (discs[0] ? discs[0].id : "__new__"), fecha: hoyISO(), tipo: pre.tipo || "podio", part: new Set(J.map(j => j.id)), orden: [], eq: {}, gana: pre.gana || "A", libre: {}, nuevoCat: "otro" };
+  const F = { disc: pre.disc || (discs[0] ? discs[0].id : "__new__"), fecha: hoyISO(), tipo: pre.tipo || "podio",
+    part: new Set(pre.part || J.map(j => j.id)), orden: pre.orden ? [...pre.orden] : [], eq: {}, nEq: 2, ordenEq: [], gana: pre.gana || "A",
+    libre: {}, nuevoCat: "otro", fmt: "elim", apuesta: "" };
   if (pre.eq) F.eq = pre.eq;
+  const LET = "ABCDEF";
+  const keys = () => LET.slice(0, F.nEq).split("");
   const idx = Object.fromEntries(J.map((j, i) => [j.id, i]));
-  const nm = id => esc(J[idx[id]].nombre);
+  const nmP = id => J[idx[id]] ? J[idx[id]].nombre : "?";
+  const nm = id => esc(nmP(id));
+  const partIds = () => J.filter(j => F.part.has(j.id)).map(j => j.id);
+  const miembros = k => partIds().filter(id => F.eq[id] === k);
+  const conEquipo = () => keys().filter(k => miembros(k).length);
   const calcPts = () => {
-    const pts = {}; const part = J.filter(j => F.part.has(j.id)).map(j => j.id);
+    const pts = {}; const part = partIds();
     part.forEach(id => pts[id] = 0);
     if (F.tipo === "podio") F.orden.filter(id => F.part.has(id)).forEach((id, i) => pts[id] = P.podio[i] ?? 0);
     else if (F.tipo === "equipos") {
-      const A = part.filter(id => F.eq[id] === "A"), B = part.filter(id => F.eq[id] === "B");
-      if (F.gana === "E") [...A, ...B].forEach(id => pts[id] = P.empate); else (F.gana === "A" ? A : B).forEach(id => pts[id] = P.ganador);
-      part.filter(id => !F.eq[id]).forEach(id => delete pts[id]);
-    } else part.forEach(id => pts[id] = Math.max(0, Math.round(+F.libre[id] || 0)));
+      part.filter(id => !keys().includes(F.eq[id])).forEach(id => delete pts[id]);
+      if (F.nEq === 2) { const A = miembros("A"), B = miembros("B"); if (F.gana === "E") [...A, ...B].forEach(id => pts[id] = P.empate); else (F.gana === "A" ? A : B).forEach(id => pts[id] = P.ganador); }
+      else F.ordenEq.filter(k => miembros(k).length).forEach((k, i) => miembros(k).forEach(id => pts[id] = P.podio[i] ?? 0));
+    } else if (F.tipo === "libre") part.forEach(id => pts[id] = Math.max(0, Math.round(+F.libre[id] || 0)));
     return pts;
   };
+  const valido = () => {
+    if (F.disc === "__new__") return false;
+    if (F.tipo === "podio") return F.orden.filter(id => F.part.has(id)).length >= 1;
+    if (F.tipo === "equipos") return conEquipo().length >= 2 && (F.nEq === 2 || F.ordenEq.some(k => miembros(k).length));
+    if (F.tipo === "torneo") return partIds().length >= 3;
+    return Object.values(calcPts()).some(v => v > 0);
+  };
+  const sumaHTML = () => { const lst = Object.entries(calcPts()).sort((a, b) => b[1] - a[1]); return `<b>Suma:</b> ${lst.length ? lst.map(([id, v]) => `${nm(id)} <b class="num">${v ? "+" + v : "0"}</b>`).join(" · ") : '<span class="muted">elegí jugadores</span>'}`; };
   const body = () => {
     const part = J.filter(j => F.part.has(j.id));
     let modo = "";
@@ -880,28 +1170,44 @@ function sheetResultado(pre = {}) {
         return `<button data-ord="${j.id}"><span class="pos ${p > -1 ? "p" + (p + 1) : ""}">${p > -1 ? p + 1 + "°" : "–"}</span><span>${esc(j.nombre)}</span><span class="muted small num">${p > -1 ? "+" + (P.podio[p] ?? 0) : ""}</span></button>`; }).join("")}</div>
         ${ord.length ? `<button class="btn ghost small" data-a="resetOrd" style="align-self:flex-start">Reiniciar orden</button>` : ""}`;
     } else if (F.tipo === "equipos") {
-      modo = `<p class="muted small" style="margin:0">Armá los equipos. Para un mano a mano, uno en cada lado.</p><div class="teamsel">${part.map(j => `<div class="tr"><span style="font-weight:600">${esc(j.nombre)}</span><div class="seg"><button data-teq="${j.id}" data-v="A" aria-pressed="${F.eq[j.id] === "A"}">Equipo A</button><button data-teq="${j.id}" data-v="B" aria-pressed="${F.eq[j.id] === "B"}">Equipo B</button></div></div>`).join("")}</div>
-        <div class="field"><label>¿Quién ganó?</label><div class="seg"><button data-gana="A" aria-pressed="${F.gana === "A"}">Equipo A</button><button data-gana="B" aria-pressed="${F.gana === "B"}">Equipo B</button><button data-gana="E" aria-pressed="${F.gana === "E"}">Empate</button></div></div>`;
+      const ks = keys(), corto = F.nEq > 2;
+      const resultado = F.nEq === 2
+        ? `<div class="field"><label>¿Quién ganó?</label><div class="seg"><button data-gana="A" aria-pressed="${F.gana === "A"}">Equipo A</button><button data-gana="B" aria-pressed="${F.gana === "B"}">Equipo B</button><button data-gana="E" aria-pressed="${F.gana === "E"}">Empate</button></div></div>`
+        : `<div class="field"><label>Tocá los equipos en el orden en que terminaron</label>${conEquipo().length ? `<div class="order">${conEquipo().map(k => { const p = F.ordenEq.indexOf(k);
+            return `<button data-oeq="${k}"><span class="pos ${p > -1 ? "p" + (p + 1) : ""}">${p > -1 ? p + 1 + "°" : "–"}</span><span>Equipo ${k} <span class="muted small">${esc(miembros(k).map(nmP).join(" + "))}</span></span><span class="muted small num">${p > -1 ? "+" + (P.podio[p] ?? 0) : ""}</span></button>`; }).join("")}</div>` : '<p class="muted small" style="margin:0">Primero armá los equipos.</p>'}</div>`;
+      modo = `<p class="muted small" style="margin:0">Armá los equipos. Para un mano a mano, uno en cada lado.</p>
+        <div class="teamsel">${part.map(j => `<div class="tr"><span style="font-weight:600">${esc(j.nombre)}</span><div class="seg">${ks.map(k => `<button data-teq="${j.id}" data-v="${k}" aria-pressed="${F.eq[j.id] === k}" ${corto ? `aria-label="Equipo ${k}"` : ""}>${corto ? k : "Equipo " + k}</button>`).join("")}</div></div>`).join("")}</div>
+        <div class="row">${F.nEq < 6 && F.nEq < part.length ? `<button class="btn" data-a="masEq">+ Otro equipo</button>` : ""}${F.nEq > 2 ? `<button class="btn ghost" data-a="menosEq">Quitar equipo ${ks[ks.length - 1]}</button>` : ""}</div>
+        ${resultado}`;
+    } else if (F.tipo === "torneo") {
+      const n = part.length;
+      let size = 2; while (size < n) size *= 2;
+      const info = F.fmt === "elim" ? `${n} jugadores · ${Math.max(0, n - 1)} partidos${size > n ? ` · ${size - n} pasan directo a la segunda ronda` : ""}` : `${n} jugadores · ${n * (n - 1) / 2} partidos, cada uno juega con todos`;
+      modo = `<p class="muted small" style="margin:0">Elegí arriba quiénes juegan. La app sortea los cruces y arma el cuadro; después cargás cada partido desde la pestaña Partidos.</p>
+        <div class="field"><label>Formato</label><div class="seg"><button data-fmt="elim" aria-pressed="${F.fmt === "elim"}">Eliminación directa</button><button data-fmt="liga" aria-pressed="${F.fmt === "liga"}">Todos contra todos</button></div></div>
+        <div class="preview">${n >= 3 ? info : "Hacen falta al menos 3 jugadores."}<br><span class="muted">Al terminar: campeón +${P.podio[0] ?? 0}, 2° +${P.podio[1] ?? 0}, ${F.fmt === "elim" ? "semifinalistas" : "3°"} +${P.podio[2] ?? 0}.</span></div>`;
     } else {
       modo = `<p class="muted small" style="margin:0">Poné los puntos que se lleva cada uno para la tabla.</p><div class="teamsel">${part.map(j => `<div class="tr"><label for="lb-${j.id}" style="font-weight:600">${esc(j.nombre)}</label><input class="input num" type="number" min="0" max="99" inputmode="numeric" id="lb-${j.id}" data-lib="${j.id}" value="${F.libre[j.id] ?? ""}" style="width:90px;text-align:center" placeholder="0"></div>`).join("")}</div>`;
     }
-    const pts = calcPts(); const lst = Object.entries(pts).sort((a, b) => b[1] - a[1]);
-    const valido = F.disc === "__new__" ? false : F.tipo === "podio" ? F.orden.filter(id => F.part.has(id)).length >= 1 : F.tipo === "equipos" ? (J.some(j => F.part.has(j.id) && F.eq[j.id] === "A") && J.some(j => F.part.has(j.id) && F.eq[j.id] === "B")) : Object.values(pts).some(v => v > 0);
+    const torneo = F.tipo === "torneo";
     const nuevaForm = F.disc === "__new__" ? `<div class="preview stack" style="gap:8px">
         <div class="field"><label for="nd2-n">Nombre de la disciplina</label><input class="input" id="nd2-n" maxlength="30" placeholder="Ej: Metegol" value="${esc(F.nuevoNombre || "")}"></div>
         <div class="seg" id="nd2-cat">${Object.entries(CATS).map(([k, l]) => `<button data-v2="${k}" aria-pressed="${F.nuevoCat === k}">${l.split(" ")[0]}</button>`).join("")}</div>
         <div class="row"><button class="btn primary" data-a="confirmarNueva">Agregar y usar</button>${discs.length ? `<button class="btn ghost" data-a="cancelarNueva">Cancelar</button>` : ""}</div>
       </div>` : "";
+    const apuesta = pozoOn && !torneo ? `<div class="field"><label for="r-ap">Apuesta en aguaritos (opcional)</label><input class="input num" type="number" min="0" inputmode="numeric" id="r-ap" value="${esc(F.apuesta)}" placeholder="0">
+        <span class="muted small">Cada uno de los que juegan pone esto y ${F.tipo === "equipos" ? "el equipo ganador se lo reparte" : "el ganador se lleva todo"}. Si empatan, nadie pierde.</span></div>` : "";
     return `${sheetHead("Cargar resultado")}
       <div class="stack">
         <div class="row" style="flex-wrap:nowrap"><div class="field" style="flex:2"><label for="r-disc">Disciplina</label><select class="input" id="r-disc">${discs.map(d => `<option value="${d.id}" ${d.id === F.disc ? "selected" : ""}>${esc(d.nombre)}</option>`).join("")}<option value="__new__" ${F.disc === "__new__" ? "selected" : ""}>+ Nueva disciplina…</option></select></div>
-          <div class="field" style="flex:1.3"><label for="r-fecha">Fecha</label><input class="input" type="date" id="r-fecha" value="${F.fecha}"></div></div>
+          ${torneo ? "" : `<div class="field" style="flex:1.3"><label for="r-fecha">Fecha</label><input class="input" type="date" id="r-fecha" value="${F.fecha}"></div>`}</div>
         ${nuevaForm}
-        <div class="field"><label>¿Quiénes jugaron?</label><div class="row">${J.map((j, i) => `<button class="chip" data-part="${j.id}" aria-pressed="${F.part.has(j.id)}"><i class="dot" style="background:${colorOf(i)}"></i>${esc(j.nombre)}</button>`).join("")}</div></div>
-        <div class="field"><label>Cómo se define</label><div class="seg"><button data-tipo="podio" aria-pressed="${F.tipo === "podio"}">Podio</button><button data-tipo="equipos" aria-pressed="${F.tipo === "equipos"}">1 vs 1 / Equipos</button><button data-tipo="libre" aria-pressed="${F.tipo === "libre"}">A mano</button></div></div>
+        <div class="field"><label>¿Quiénes ${torneo ? "juegan" : "jugaron"}?</label><div class="row">${J.map((j, i) => `<button class="chip" data-part="${j.id}" aria-pressed="${F.part.has(j.id)}"><i class="dot" style="background:${colorOf(i)}"></i>${esc(j.nombre)}</button>`).join("")}</div></div>
+        <div class="field"><label>Cómo se define</label><div class="seg"><button data-tipo="podio" aria-pressed="${F.tipo === "podio"}">Podio</button><button data-tipo="equipos" aria-pressed="${F.tipo === "equipos"}">Equipos</button><button data-tipo="libre" aria-pressed="${F.tipo === "libre"}">A mano</button><button data-tipo="torneo" aria-pressed="${torneo}">Torneo</button></div></div>
         ${modo}
-        <div class="preview"><b>Suma:</b> ${lst.length ? lst.map(([id, v]) => `${nm(id)} <b class="num">${v ? "+" + v : "0"}</b>`).join(" · ") : '<span class="muted">elegí jugadores</span>'}</div>
-        <button class="btn primary block" data-a="guardarRes" ${valido ? "" : "disabled"}>Guardar resultado</button>
+        ${apuesta}
+        ${torneo ? "" : `<div class="preview" id="r-suma">${sumaHTML()}</div>`}
+        ${torneo ? `<button class="btn primary block" data-a="armarT" ${valido() ? "" : "disabled"}>Sortear y armar torneo</button>` : `<button class="btn primary block" data-a="guardarRes" ${valido() ? "" : "disabled"}>Guardar resultado</button>`}
       </div>`;
   };
   openSheet(body(), sh => {
@@ -911,8 +1217,10 @@ function sheetResultado(pre = {}) {
       if (e.target.id === "r-fecha") F.fecha = e.target.value || hoyISO();
     });
     sh.addEventListener("input", e => {
-      const id = e.target.dataset.lib; if (id) { F.libre[id] = e.target.value; const pv = sh.querySelector(".preview"); const pts = calcPts(); pv.innerHTML = "<b>Suma:</b> " + Object.entries(pts).sort((a, b) => b[1] - a[1]).map(([i, v]) => `${nm(i)} <b class="num">${v ? "+" + v : "0"}</b>`).join(" · "); sh.querySelector('[data-a="guardarRes"]').disabled = !Object.values(pts).some(v => v > 0); }
+      const id = e.target.dataset.lib;
+      if (id) { F.libre[id] = e.target.value; const pv = sh.querySelector("#r-suma"); if (pv) pv.innerHTML = sumaHTML(); const g = sh.querySelector('[data-a="guardarRes"]'); if (g) g.disabled = !valido(); }
       if (e.target.id === "nd2-n") F.nuevoNombre = e.target.value;
+      if (e.target.id === "r-ap") F.apuesta = e.target.value;
     });
     sh.addEventListener("click", async e => {
       const b = e.target.closest("button"); if (!b) return;
@@ -921,6 +1229,10 @@ function sheetResultado(pre = {}) {
       else if (b.dataset.ord) { const id = b.dataset.ord; F.orden = F.orden.includes(id) ? F.orden.filter(x => x !== id) : [...F.orden, id]; re(); }
       else if (b.dataset.teq) { F.eq[b.dataset.teq] = F.eq[b.dataset.teq] === b.dataset.v ? undefined : b.dataset.v; re(); }
       else if (b.dataset.gana) { F.gana = b.dataset.gana; re(); }
+      else if (b.dataset.oeq) { const k = b.dataset.oeq; F.ordenEq = F.ordenEq.includes(k) ? F.ordenEq.filter(x => x !== k) : [...F.ordenEq, k]; re(); }
+      else if (b.dataset.fmt) { F.fmt = b.dataset.fmt; re(); }
+      else if (b.dataset.a === "masEq") { F.nEq = Math.min(6, F.nEq + 1); re(); }
+      else if (b.dataset.a === "menosEq") { const last = keys().pop(); Object.keys(F.eq).forEach(id => { if (F.eq[id] === last) delete F.eq[id]; }); F.ordenEq = F.ordenEq.filter(k => k !== last); F.nEq = Math.max(2, F.nEq - 1); re(); }
       else if (b.dataset.a === "resetOrd") { F.orden = []; re(); }
       else if (b.dataset.v2) { F.nuevoCat = b.dataset.v2; re(); }
       else if (b.dataset.a === "confirmarNueva") {
@@ -934,11 +1246,23 @@ function sheetResultado(pre = {}) {
         } catch (err) { b.disabled = false; writeErr(err); }
       }
       else if (b.dataset.a === "cancelarNueva") { F.disc = discs[0] ? discs[0].id : "__new__"; re(); }
+      else if (b.dataset.a === "armarT") {
+        if (!valido()) return;
+        const t = armarTorneo(F.disc, partIds(), F.fmt);
+        b.disabled = true;
+        try { await backend.put(S.code, "torneos", t); closeSheet(); S.tab = "partidos"; lsSet("oea_tab", S.tab); render(); window.scrollTo(0, 0); toast("Cruces sorteados. ¡A jugar!"); }
+        catch (err) { b.disabled = false; writeErr(err); }
+      }
       else if (b.dataset.a === "guardarRes") {
+        if (!valido()) return;
         const pts = calcPts(); const jug = Object.keys(pts);
         const rec = { id: uid(), disc: F.disc, fecha: F.fecha, tipo: F.tipo, jugadores: jug, pts, creado: Date.now() };
         if (F.tipo === "podio") rec.orden = F.orden.filter(id => F.part.has(id));
-        if (F.tipo === "equipos") { rec.equipos = { A: jug.filter(id => F.eq[id] === "A"), B: jug.filter(id => F.eq[id] === "B") }; rec.gana = F.gana; }
+        if (F.tipo === "equipos") {
+          rec.equipos = Object.fromEntries(conEquipo().map(k => [k, jug.filter(id => F.eq[id] === k)]));
+          if (F.nEq === 2) rec.gana = F.gana; else rec.ordenEq = F.ordenEq.filter(k => rec.equipos[k]);
+        }
+        const ap = Math.round(+F.apuesta || 0); if (pozoOn && ap > 0) rec.apuesta = ap;
         b.disabled = true;
         try { await backend.put(S.code, "partidos", rec); closeSheet(); S.tab = "tabla"; render(); toast("Resultado cargado"); }
         catch (err) { b.disabled = false; writeErr(err); }
@@ -1026,15 +1350,30 @@ function sheetAjustes() {
         </div>
         <p class="muted small" style="margin:0">Cambiar los puntos afecta solo a los resultados que cargues desde ahora.</p>
       </div>
+      <div class="field"><label>Pozo en aguaritos</label>
+        <div class="seg"><button data-pz="1" aria-pressed="${!!(s.pozo && s.pozo.activo)}">Con pozo</button><button data-pz="0" aria-pressed="${!(s.pozo && s.pozo.activo)}">Sin pozo</button></div>
+        ${s.pozo && s.pozo.activo ? `<div class="tiles" style="grid-template-columns:repeat(4,1fr)">
+          <div class="tile"><label class="k" for="a-pe">Entrada</label><input class="input num" type="number" min="0" max="100000" id="a-pe" value="${s.pozo.entrada ?? 100}"></div>
+          ${["1°", "2°", "3°"].map((l, i) => `<div class="tile"><label class="k" for="a-r${i}">${l} se lleva %</label><input class="input num" type="number" min="0" max="100" id="a-r${i}" value="${(s.pozo.reparto || [60, 30, 10])[i] ?? 0}"></div>`).join("")}
+        </div>` : ""}
+        <p class="muted small" style="margin:0">Cada uno pone la entrada y el podio de la tabla se lleva el pozo. Además, al cargar un resultado pueden apostar en ese partido. Los aguaritos son una moneda de la sala: la app no maneja plata.</p>
+      </div>
       <button class="btn primary block" data-a="guardarAj">Guardar cambios</button>
       ${S.code !== DEMO ? `<div class="preview small">Para sumar amigos, pasales el código <b style="letter-spacing:.14em">${esc(S.code)}</b>.</div>` : ""}
     </div>`;
   openSheet(body(), sh => {
-    const sync = () => { sh.querySelectorAll("[data-jn]").forEach(inp => { const j = s.jugadores.find(x => x.id === inp.dataset.jn); if (j) j.nombre = inp.value.trim() || j.nombre; }); s.nombre = sh.querySelector("#a-n").value.trim() || s.nombre; };
+    const num = (id, max) => { const el = sh.querySelector(id); return el ? Math.max(0, Math.min(max, Math.round(+el.value || 0))) : null; };
+    const sync = () => {
+      sh.querySelectorAll("[data-jn]").forEach(inp => { const j = s.jugadores.find(x => x.id === inp.dataset.jn); if (j) j.nombre = inp.value.trim() || j.nombre; });
+      s.nombre = sh.querySelector("#a-n").value.trim() || s.nombre;
+      if (sh.querySelector("#a-p0")) s.puntaje = { podio: [num("#a-p0", 20), num("#a-p1", 20), num("#a-p2", 20)], ganador: num("#a-g", 20), empate: num("#a-e", 20) };
+      if (s.pozo && s.pozo.activo && sh.querySelector("#a-pe")) s.pozo = { activo: true, entrada: num("#a-pe", 100000), reparto: [num("#a-r0", 100), num("#a-r1", 100), num("#a-r2", 100)] };
+    };
     const re = () => { sync(); sh.innerHTML = '<div class="grab"></div>' + body(); };
     sh.addEventListener("click", async e => {
       const b = e.target.closest("button"); if (!b) return;
       if (b.dataset.jdel) { if (s.jugadores.length <= 2) { toast("La sala necesita al menos 2 jugadores"); return; } sync(); s.jugadores = s.jugadores.filter(j => j.id !== b.dataset.jdel); re(); }
+      if (b.dataset.pz) { sync(); s.pozo = { entrada: 100, reparto: [60, 30, 10], ...(s.pozo || {}), activo: b.dataset.pz === "1" }; re(); return; }
       if (b.dataset.a === "addJ") { const v = sh.querySelector("#a-nj").value.trim(); if (!v) return; sync(); s.jugadores.push({ id: uid(), nombre: v }); re(); }
       if (b.dataset.a === "salirSala") {
         if (conPartidos.has(miId)) { toast("Tenés partidos cargados: tu nombre queda en el historial de la tabla."); return; }
@@ -1047,8 +1386,6 @@ function sheetAjustes() {
       }
       if (b.dataset.a === "guardarAj") {
         sync();
-        const n = id => Math.max(0, Math.min(20, Math.round(+sh.querySelector(id).value || 0)));
-        s.puntaje = { podio: [n("#a-p0"), n("#a-p1"), n("#a-p2")], ganador: n("#a-g"), empate: n("#a-e") };
         b.disabled = true;
         try { await backend.saveSala(S.code, s); closeSheet(); render(); toast("Cambios guardados"); } catch (err) { b.disabled = false; writeErr(err); }
       }
@@ -1115,17 +1452,45 @@ app.addEventListener("click", async e => {
     return chooserFecha(id);
   }
   if (a === "reprogramarNext") { const f = S.data.fechas.find(x => x.id === b.dataset.id); if (f) sheetFecha(f); return; }
+  if (a === "verTorneo") { S.tab = "partidos"; lsSet("oea_tab", S.tab); render(); window.scrollTo(0, 0); return; }
+  if (b.dataset.tmatch) return sheetPartidoT(b.dataset.tmatch, b.dataset.k);
+  if (b.dataset.cerrart) { b.disabled = true; try { await cerrarTorneo(b.dataset.cerrart); } catch (err) { b.disabled = false; writeErr(err); } return; }
+  if (b.dataset.cant) { const id = b.dataset.cant; return confirmInline(id, "¿Cancelar el torneo? Se borra el cuadro.", async () => { await backend.del(S.code, "torneos", id); toast("Torneo cancelado"); }); }
   // tanteador
-  const T = S.tant;
-  if (b.dataset.tm) { T.modo = b.dataset.tm; saveTant(); return render(); }
-  if (b.dataset.tmax) { T.max = +b.dataset.tmax; saveTant(); return render(); }
-  if (b.dataset.tc) { const k = b.dataset.tc; T[k] = Math.max(0, Math.min(T.max, T[k] + +b.dataset.d)); saveTant(); return render(); }
-  if (a === "resetTruco") { T.a = 0; T.b = 0; saveTant(); return render(); }
-  if (b.dataset.lc) { const id = b.dataset.lc; T.libre[id] = (T.libre[id] || 0) + +b.dataset.d; saveTant(); return render(); }
-  if (a === "resetLibre") { T.libre = {}; saveTant(); return render(); }
-  if (a === "cargarTruco") {
-    const truco = S.data.sala.disciplinas.find(d => d.nombre.toLowerCase() === "truco");
-    return sheetResultado({ disc: truco?.id, tipo: "equipos", gana: T.a >= T.max ? "A" : "B" });
+  const T = S.tant, re = () => { saveTant(); render(); };
+  if (b.dataset.tt) { T.tipo = b.dataset.tt; return re(); }
+  if (b.dataset.pmax) { T.pal.max = +b.dataset.pmax; T.pal.a = Math.min(T.pal.a, T.pal.max); T.pal.b = Math.min(T.pal.b, T.pal.max); return re(); }
+  if (b.dataset.pc) { const k = b.dataset.pc; T.pal[k] = Math.max(0, Math.min(T.pal.max, T.pal[k] + +b.dataset.d)); return re(); }
+  if (a === "resetPal") { T.pal.a = 0; T.pal.b = 0; return re(); }
+  if (b.dataset.sobj) { T.sets.obj = +b.dataset.sobj; return re(); }
+  if (b.dataset.smej) { T.sets.mejor = +b.dataset.smej; return re(); }
+  if (b.dataset.sc) {
+    const X = T.sets, k = b.dataset.sc, o = k === "a" ? "b" : "a", d = +b.dataset.d;
+    if (d > 0 && ganoTant(T)) return;
+    X[k] = Math.max(0, X[k] + d);
+    if (X[k] >= X.obj && X[k] - X[o] >= 2) { X["s" + k]++; X.hist.push(`${X.a}-${X.b}`); X.a = 0; X.b = 0; toast("Set para " + (k === "a" ? T.na : T.nb)); }
+    return re();
+  }
+  if (a === "resetSets") { Object.assign(T.sets, { a: 0, b: 0, sa: 0, sb: 0, hist: [] }); return re(); }
+  if (a === "sumarRonda") {
+    const fila = {}; let any = false;
+    app.querySelectorAll("[data-rin]").forEach(inp => { if (inp.value !== "") { fila[inp.dataset.rin] = Math.round(+inp.value || 0); any = true; } });
+    if (!any) { toast("Anotá al menos un puntaje"); return; }
+    T.ron.push(fila); return re();
+  }
+  if (a === "undoRonda") { T.ron.pop(); return re(); }
+  if (a === "resetRon") { T.ron = []; return re(); }
+  if (b.dataset.rmenos) { T.ronMenos = b.dataset.rmenos === "1"; return re(); }
+  if (b.dataset.lc) { const id = b.dataset.lc; T.cnt[id] = (T.cnt[id] || 0) + +b.dataset.d; return re(); }
+  if (a === "resetCnt") { T.cnt = {}; return re(); }
+  if (a === "cargarT") {
+    const J = S.data.sala.jugadores;
+    if (T.tipo === "palitos" || T.tipo === "sets") { const w = ganoTant(T); return sheetResultado({ tipo: "equipos", gana: w === "b" ? "B" : "A" }); }
+    let tot;
+    if (T.tipo === "rondas") { const con = new Set(T.ron.flatMap(r => Object.keys(r))); tot = J.filter(j => con.has(j.id)).map(j => ({ id: j.id, v: T.ron.reduce((s, r) => s + (+r[j.id] || 0), 0) })).sort((x, y) => T.ronMenos ? x.v - y.v : y.v - x.v); }
+    else tot = J.filter(j => (T.cnt[j.id] || 0) !== 0).map(j => ({ id: j.id, v: T.cnt[j.id] })).sort((x, y) => y.v - x.v);
+    const orden = tot.map(x => x.id);
+    return sheetResultado({ tipo: "podio", orden, part: orden });
   }
 });
 app.addEventListener("change", e => {

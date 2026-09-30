@@ -5,7 +5,7 @@ service cloud.firestore {
     match /salas/{code} {
       allow read, write: if code.size() >= 4 && code.size() <= 6;
       match /{sub}/{id} {
-        allow read, write: if sub in ['partidos', 'fechas'];
+        allow read, write: if sub in ['partidos', 'fechas', 'torneos'];
       }
     }
     // Todo lo demás, cerrado.
