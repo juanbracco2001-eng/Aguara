@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
-<meta name="theme-color" content="#17130C">
+<meta name="theme-color" content="#0B1428">
 <meta name="description" content="Aguará: olimpíadas entre amigos. Salas con código, disciplinas a elección y una tabla compartida.">
 <title>Aguará</title>
 <link rel="icon" type="image/png" href="favicon.png">
@@ -11,43 +11,45 @@
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@600;700;800;900&family=Jost:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Kaushan+Script&family=Caveat:wght@600;700&family=Archivo:wght@600;700;800;900&family=Jost:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --bg:#EFE7D3; --surface:#FFFFFF; --surface-2:#E7DDC2; --surface-3:#DCCFA9;
-  --ink:#17130C; --ink-2:#4B4130; --ink-3:#6A5D44; --line:#D8CBA0;
-  --accent:#D2401F; --accent-2:#F3DCC9; --accent-ink:#FFFFFF;
-  --gold:#A9790A; --silver:#7C8794; --bronze:#9C5B2E;
+  --bg:#EDF2F9; --surface:#FFFFFF; --surface-2:#DEE8F5; --surface-3:#C3D3EA;
+  --ink:#0E1A30; --ink-2:#37476A; --ink-3:#52658A; --line:#C9D6EA;
+  --accent:#1266D6; --accent-2:#DCE9FC; --accent-ink:#FFFFFF; --fur:#E8792B; --navy:#0B1428; --sky:#6EC6FF;
+  --gold:#B26A00; --silver:#66768F; --bronze:#9C5B2E;
   --good:#1E7A44; --bad:#B5311F;
   --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s9:#0f8b99; --s10:#8a5a32;
-  --cat-dep:#1E4FA3; --cat-mesa:#AD7415; --cat-esp:#D2401F; --cat-otro:#17130C;
-  --shadow:0 1px 2px rgba(23,19,12,.08),0 6px 18px rgba(23,19,12,.09);
+  --cat-dep:#1266D6; --cat-mesa:#B26A00; --cat-esp:#D2601A; --cat-otro:#0E1A30;
+  --shadow:0 1px 2px rgba(14,26,48,.08),0 6px 18px rgba(14,26,48,.09);
   --display:"Anton",Impact,sans-serif;
+  --script:"Kaushan Script","Brush Script MT",cursive;
+  --hand:"Caveat","Segoe Print",cursive;
   --head:"Archivo","Helvetica Neue",Arial,sans-serif;
   --body:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --bg:#16130B; --surface:#221D12; --surface-2:#2C2517; --surface-3:#3A311D;
-    --ink:#F5EEDD; --ink-2:#C7BB9C; --ink-3:#948765; --line:#3C331F;
-    --accent:#F2643F; --accent-2:#3C2318; --accent-ink:#1A0A05;
-    --gold:#D9A824; --silver:#B7C0CF; --bronze:#D58C5B;
+    --bg:#0A1222; --surface:#12203A; --surface-2:#1A2C4E; --surface-3:#26395F;
+    --ink:#EAF2FF; --ink-2:#B4C6E3; --ink-3:#8DA3C8; --line:#22365C;
+    --accent:#4DA3FF; --accent-2:#152A4F; --accent-ink:#04142C; --navy:#060D1C;
+    --gold:#F2A73B; --silver:#B7C0CF; --bronze:#D58C5B;
     --good:#43C07A; --bad:#EE6B61;
     --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#2bb3c2; --s10:#b88457;
-    --cat-dep:#4C86E0; --cat-mesa:#E7AC2E; --cat-esp:#F2643F; --cat-otro:#F5EEDD;
+    --cat-dep:#4DA3FF; --cat-mesa:#F2A73B; --cat-esp:#F2884A; --cat-otro:#EAF2FF;
     --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.3);
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#16130B; --surface:#221D12; --surface-2:#2C2517; --surface-3:#3A311D;
-  --ink:#F5EEDD; --ink-2:#C7BB9C; --ink-3:#948765; --line:#3C331F;
-  --accent:#F2643F; --accent-2:#3C2318; --accent-ink:#1A0A05;
-  --gold:#D9A824; --silver:#B7C0CF; --bronze:#D58C5B;
+  --bg:#0A1222; --surface:#12203A; --surface-2:#1A2C4E; --surface-3:#26395F;
+  --ink:#EAF2FF; --ink-2:#B4C6E3; --ink-3:#8DA3C8; --line:#22365C;
+  --accent:#4DA3FF; --accent-2:#152A4F; --accent-ink:#04142C; --navy:#060D1C;
+  --gold:#F2A73B; --silver:#B7C0CF; --bronze:#D58C5B;
   --good:#43C07A; --bad:#EE6B61;
   --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s9:#2bb3c2; --s10:#b88457;
-  --cat-dep:#4C86E0; --cat-mesa:#E7AC2E; --cat-esp:#F2643F; --cat-otro:#F5EEDD;
+  --cat-dep:#4DA3FF; --cat-mesa:#F2A73B; --cat-esp:#F2884A; --cat-otro:#EAF2FF;
   --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.3);
 }
 *{box-sizing:border-box}
@@ -61,12 +63,12 @@ button{cursor:pointer}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);padding-block:14px 10px;display:flex;align-items:center;gap:10px}
-.brandmark{border:0;border-radius:12px;width:42px;height:42px;display:grid;place-items:center;flex:none;background:#17130C;padding:3px;overflow:hidden}
+.brandmark{border:0;border-radius:50%;width:46px;height:46px;display:grid;place-items:center;flex:none;background:transparent;padding:0;overflow:visible}
 .brandmark img{width:100%;height:100%;display:block;object-fit:contain}
-.brandmark.lg{width:72px;height:72px;border-radius:18px;padding:5px}
+.brandmark.lg{width:84px;height:84px}
 .brandlockup{display:flex;align-items:center;gap:12px;margin-bottom:2px}
-.wordmark{font-family:var(--display);font-size:30px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink);line-height:1}
-.top h1{font-family:var(--head);font-weight:800;font-size:24px;line-height:1;margin:0;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
+.wordmark{font-family:var(--script);font-size:34px;color:var(--accent);line-height:1;transform:rotate(-3deg)}
+.top h1{font-family:var(--display);font-weight:400;font-style:italic;font-size:26px;line-height:1;margin:0;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
 .top .grow{flex:1;min-width:0}
 .iconbtn{border:0;background:var(--surface);border-radius:12px;width:40px;height:40px;display:grid;place-items:center;box-shadow:var(--shadow);flex:none}
 .iconbtn svg{width:20px;height:20px}
@@ -85,7 +87,7 @@ button{cursor:pointer}
 .stack{display:flex;flex-direction:column;gap:14px}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .eyebrow{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0}
-h2{font-family:var(--head);font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.02em;margin:0;line-height:1.05}
+h2{font-family:var(--display);font-weight:400;font-style:italic;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin:0;line-height:1.05}
 .muted{color:var(--ink-3)}
 .small{font-size:13px}
 .btn{border:0;border-radius:12px;padding:10px 16px;font-weight:700;background:var(--surface-2);color:var(--ink);font-size:14.5px}
@@ -104,7 +106,8 @@ h2{font-family:var(--head);font-weight:800;font-size:22px;text-transform:upperca
 .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--surface-2);border-radius:12px;padding:4px;gap:4px}
 .seg button{border:0;background:transparent;border-radius:9px;padding:8px 6px;font-weight:700;font-size:13.5px;color:var(--ink-2)}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
-.empty{text-align:center;padding:28px 12px;color:var(--ink-3)}
+.empty{text-align:center;padding:22px 12px 26px;color:var(--ink-3)}
+.empty h2{font-style:italic}
 
 /* ranking */
 .rank{display:flex;flex-direction:column}
@@ -124,14 +127,18 @@ h2{font-family:var(--head);font-weight:800;font-size:22px;text-transform:upperca
 .form i.p{background:var(--gold)}
 
 /* hero leader */
-.lead{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:end;background:var(--ink);color:var(--surface);border-radius:20px;padding:18px;position:relative;overflow:hidden}
-.lead::after{content:"";position:absolute;right:-30px;top:-30px;width:170px;height:170px;border-radius:50%;border:14px solid var(--accent);opacity:.9}
+.lead{display:grid;grid-template-columns:1fr;gap:2px;align-content:end;min-height:172px;color:#fff;border-radius:20px;padding:18px 44% 16px 18px;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(6,14,32,.94) 38%,rgba(6,14,32,.25) 78%),url(escena-velocidad.jpg) 78% 40%/cover,#0B1428}
+.lead::after{content:"";position:absolute;left:-20%;top:0;bottom:0;width:26px;background:var(--sky);opacity:.85;transform:skewX(-24deg) translateX(0);box-shadow:38px 0 0 -8px rgba(110,198,255,.5)}
 .lead>*{position:relative;z-index:1}
-.lead .l1{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
-.lead .l2{font-family:var(--display);font-weight:800;font-size:40px;line-height:.95;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis}
-.lead .l3{font-size:13px;opacity:.75;grid-column:1/-1}
-.lead .big{font-family:var(--display);font-weight:800;font-size:56px;line-height:.85;position:relative;z-index:1;text-align:right}
-.lead .big small{display:block;font-family:var(--body);font-size:13px;letter-spacing:.14em;opacity:.7}
+.lead .l1{font-family:var(--hand);font-weight:700;font-size:20px;color:var(--sky);line-height:1}
+.lead .l2{font-family:var(--display);font-style:italic;font-size:36px;line-height:1;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis}
+.lead .l3{font-size:13px;opacity:.85;margin-top:4px}
+.lead .big{font-family:var(--display);font-style:italic;font-size:46px;line-height:.9;color:var(--fur);display:flex;align-items:baseline;gap:8px}
+.lead .big small{font-family:var(--hand);font-weight:700;font-size:20px;color:#fff;opacity:.9}
+@media (prefers-reduced-motion:no-preference){
+  .lead::after{animation:slash .9s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes slash{from{transform:skewX(-24deg) translateX(-160px);opacity:0}to{transform:skewX(-24deg) translateX(0);opacity:.85}}
+}
 .progress{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden}
 .progress b{display:block;height:100%;background:var(--accent);border-radius:99px}
 
@@ -223,7 +230,7 @@ table.heat td.dn{text-align:left;font-weight:600;white-space:nowrap;padding-inli
 .tabicon{position:relative;display:inline-flex}
 .tabdot{position:absolute;top:-2px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
 .tabs button[aria-current="page"]{color:var(--accent)}
-.fab{position:fixed;right:max(16px,calc(50% - 304px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:31;border:0;border-radius:18px;background:var(--accent);color:var(--accent-ink);font-weight:800;padding:14px 18px;box-shadow:0 8px 24px color-mix(in oklab,var(--accent) 40%,transparent);display:flex;gap:8px;align-items:center;font-size:15px}
+.fab{font-style:italic;position:fixed;right:max(16px,calc(50% - 304px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:31;border:0;border-radius:18px;background:var(--accent);color:var(--accent-ink);font-weight:800;padding:14px 18px;box-shadow:0 8px 24px color-mix(in oklab,var(--accent) 40%,transparent);display:flex;gap:8px;align-items:center;font-size:15px}
 .fab svg{width:20px;height:20px}
 
 /* sheet */
@@ -239,10 +246,30 @@ table.heat td.dn{text-align:left;font-weight:600;white-space:nowrap;padding-inli
 .teamsel .seg{min-width:170px}
 .preview{background:var(--surface-2);border-radius:12px;padding:10px 12px;font-size:13.5px}
 .toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:10px 16px;border-radius:12px;font-weight:600;z-index:60;font-size:14px;max-width:calc(100% - 32px)}
-.home-hero{padding-block:22px 6px}
-.home-hero h1{font-family:var(--display);font-weight:800;font-size:52px;line-height:.88;text-transform:uppercase;margin:10px 0 10px;letter-spacing:.005em}
-.home-hero h1 em{font-style:normal;color:var(--accent)}
-.home-hero p{margin:0;color:var(--ink-2);max-width:40ch}
+.home-hero{position:relative;overflow:hidden;margin-top:14px;border-radius:24px;padding:20px 18px 22px;color:#fff;background:linear-gradient(120deg,#0B1428 30%,#0F3F97 100%)}
+.home-hero::before,.home-hero::after{content:"";position:absolute;top:-10%;height:150px;transform:skewX(-24deg);background:var(--sky);opacity:.9}
+.home-hero::before{right:34%;width:22px}
+.home-hero::after{right:27%;width:9px;opacity:.55}
+.home-hero>*{position:relative;z-index:1}
+.home-hero .brandmark.lg{position:absolute;right:-6px;top:6px;width:150px;height:150px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+.home-hero .wordmark{color:#fff;font-size:40px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.home-hero .brandlockup{min-height:124px;align-items:flex-start}
+.home-hero h1{font-family:var(--display);font-style:italic;font-weight:400;font-size:46px;line-height:.95;text-transform:uppercase;margin:6px 0 10px;letter-spacing:.005em;max-width:9em}
+.home-hero h1 em{font-style:italic;color:var(--fur)}
+.home-hero p{margin:0;color:#D6E4FA;max-width:40ch}
+@media (prefers-reduced-motion:no-preference){
+  .home-hero .brandmark.lg{animation:pop .7s cubic-bezier(.2,1.3,.4,1) .15s both}
+  .home-hero::before{animation:slash2 .8s cubic-bezier(.2,.8,.2,1) both}
+  .home-hero::after{animation:slash2 .8s cubic-bezier(.2,.8,.2,1) .12s both}
+  @keyframes pop{from{transform:scale(.6) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
+  @keyframes slash2{from{transform:skewX(-24deg) translateX(-200px);opacity:0}}
+}
+.slogan{font-family:var(--script);font-size:24px;text-align:center;color:var(--sky);padding:18px 12px 20px;margin-top:22px;background:var(--navy);border-radius:20px;transform:none;line-height:1.15}
+.slogan small{display:block;font-family:var(--hand);font-weight:700;font-size:17px;letter-spacing:.04em;color:#8DB8F0;margin-top:6px}
+.scene{position:relative;height:118px;border-radius:18px;overflow:hidden;margin:2px 0 14px;background:var(--navy) center/cover;box-shadow:var(--shadow)}
+.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,14,32,.7),rgba(6,14,32,0) 60%)}
+.scene span{position:absolute;left:14px;bottom:8px;z-index:1;font-family:var(--hand);font-weight:700;font-size:26px;color:#fff;line-height:1;text-shadow:0 2px 6px rgba(0,0,0,.5)}
+.mascot{display:block;margin:0 auto 6px;height:104px;width:auto}
 .salacard{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;border:0;background:var(--surface);border-radius:14px;padding:12px 14px;text-align:left;box-shadow:var(--shadow);width:100%}
 .salacard b{display:block;font-size:15.5px}
 .confirm{background:color-mix(in oklab,var(--bad) 12%,var(--surface));border-radius:12px;padding:10px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13.5px}
@@ -558,6 +585,8 @@ function calc(d) {
 }
 
 /* ============ marca ============ */
+const SCENES = { partidos:['fitness','A darle','50% 12%'], fechas:['libertad','La próxima juntada','50% 22%'], disciplinas:['deporte','Elegí tu deporte','60% 35%'], tanteador:['actitud','Con actitud','50% 18%'] };
+const mascota = n => `<img class="mascot" src="aguara-${n}.png" alt="" width="120" height="104">`;
 const WOLF = '<img src="logo.png" alt="" width="256" height="256">';
 
 /* ============ íconos ============ */
@@ -578,14 +607,15 @@ const TABS = [["tabla","Tabla"],["partidos","Partidos"],["fechas","Fechas"],["di
 function render() {
   pendingRender = false;
   if (S.view === "home") { tabsEl.hidden = true; app.innerHTML = vHome(); bindHome(); removeFab(); return; }
-  if (!S.data) { tabsEl.hidden = true; removeFab(); app.innerHTML = `<header class="top"><button class="iconbtn" data-a="home" aria-label="Volver">${I.back}</button><div class="grow"><h1>Cargando…</h1></div></header>`; return; }
+  if (!S.data) { tabsEl.hidden = true; removeFab(); app.innerHTML = `<header class="top"><button class="iconbtn" data-a="home" aria-label="Volver">${I.back}</button><div class="grow"><h1>Cargando…</h1></div></header><div class="empty">${mascota(4)}</div>`; return; }
   const C = calc(S.data);
   const proxF = [...S.data.fechas].sort((a, b) => a.fecha.localeCompare(b.fecha)).find(f => diasHasta(f.fecha) >= 0);
   const showDot = proxF && diasHasta(proxF.fecha) <= 1;
   tabsEl.hidden = false;
   tabsEl.innerHTML = `<div class="in">${TABS.map(([k, l]) => `<button data-tab="${k}" ${S.tab === k ? 'aria-current="page"' : ""}><span class="tabicon">${I[k]}${k === "fechas" && showDot ? '<i class="tabdot"></i>' : ""}</span><span>${l}</span></button>`).join("")}</div>`;
   const body = { tabla: vTabla, partidos: vPartidos, fechas: vFechas, disciplinas: vDisciplinas, tanteador: vTanteador }[S.tab](C);
-  app.innerHTML = vHeader() + (S.code === DEMO ? `<div class="banner"><div><b>Sala de ejemplo.</b> Probá todo acá; los cambios no se guardan para otros.</div><button class="btn primary" data-a="home">Crear la mía</button></div>` : "") + body;
+  const sc = SCENES[S.tab] ? `<div class="scene" style="background-image:url(escena-${SCENES[S.tab][0]}.jpg);background-position:${SCENES[S.tab][2]}"><span>${SCENES[S.tab][1]}</span></div>` : "";
+  app.innerHTML = vHeader() + sc + (S.code === DEMO ? `<div class="banner"><div><b>Sala de ejemplo.</b> Probá todo acá; los cambios no se guardan para otros.</div><button class="btn primary" data-a="home">Crear la mía</button></div>` : "") + body;
   if (S.tab === "tabla") drawChart(C);
   if (S.tab === "tabla" || S.tab === "partidos") showFab(); else removeFab();
 }
@@ -632,6 +662,7 @@ function vHome() {
       <section class="stack"><p class="eyebrow">Para probar</p>
         <button class="salacard" data-open="${DEMO}"><span><b>Olimpíadas del Barrio</b><span class="muted small">Sala de ejemplo con 9 partidos cargados</span></span>${I.back.replace("M15 5l-7 7 7 7", "M9 5l7 7-7 7")}</button>
       </section>
+      <div class="slogan">El límite es solo otro paso<small>velocidad · resistencia · libertad · naturaleza · fuerza</small></div>
     </div>`;
 }
 function bindHome() {
@@ -669,7 +700,7 @@ function bindHome() {
 /* ---------- TABLA ---------- */
 function vTabla(C) {
   const s = S.data.sala, t = C.tabla;
-  if (!C.P.length) return `<div class="stack">${bannerTorneo(C)}<div class="card empty"><h2 style="color:var(--ink)">Todavía no hay puntos</h2><p>Cargá el primer resultado con el botón de abajo y la tabla se arma sola.</p></div>${vPozo(C)}</div>`;
+  if (!C.P.length) return `<div class="stack">${bannerTorneo(C)}<div class="card empty">${mascota(2)}<h2 style="color:var(--ink)">Todavía no hay puntos</h2><p>Cargá el primer resultado con el botón de abajo y la tabla se arma sola.</p></div>${vPozo(C)}</div>`;
   const L = t[0];
   const empLider = t.filter(r => r.pos === 1).length > 1;
   const total = s.disciplinas.length, hechas = [...C.jugadas].length;
@@ -777,7 +808,7 @@ function vPartidos(C) {
   const J = Object.fromEntries(S.data.sala.jugadores.map((j, i) => [j.id, { ...j, i }]));
   const nmJ = id => esc(J[id]?.nombre || "?");
   const torneos = vTorneos(C);
-  if (!C.P.length) return `<div class="stack">${torneos}<div class="card empty"><h2 style="color:var(--ink)">Sin partidos todavía</h2><p>Cada resultado que cargues aparece acá, del más nuevo al más viejo.</p></div></div>`;
+  if (!C.P.length) return `<div class="stack">${torneos}<div class="card empty">${mascota(3)}<h2 style="color:var(--ink)">Sin partidos todavía</h2><p>Cada resultado que cargues aparece acá, del más nuevo al más viejo.</p></div></div>`;
   const items = [...C.P].reverse().map(p => {
     const f = fD(p.fecha), d = C.Dm[p.disc];
     let det = "", tipo = "";
@@ -999,7 +1030,7 @@ function vFechas(C) {
       <div><p class="eyebrow" style="color:inherit;opacity:.85">Próxima fecha · ${cuando(dd)}</p><h3>${esc(nomD(N.discs) || "Disciplinas a definir")}</h3>
       <p>${esc(fD(N.fecha).w)}${N.hora ? " " + esc(N.hora) + " h" : ""}${N.lugar ? " · " + esc(N.lugar) : ""}</p>${N.nota ? `<p>${esc(N.nota)}</p>` : ""}
       <div class="row" style="margin-top:10px"><button class="btn" data-a="reprogramarNext" data-id="${N.id}" style="background:rgba(255,255,255,.2);color:inherit;box-shadow:none">Reprogramar</button></div></div></div>`
-      : `<div class="card empty"><h2 style="color:var(--ink)">No hay fechas programadas</h2><p>Arreglen cuándo se vuelven a juntar y anótenlo acá.</p></div>`}
+      : `<div class="card empty">${mascota(1)}<h2 style="color:var(--ink)">No hay fechas programadas</h2><p>Arreglen cuándo se vuelven a juntar y anótenlo acá.</p></div>`}
     <button class="btn primary block" data-a="nuevafecha">${I.plus.replace("<svg", '<svg style="width:18px;height:18px;vertical-align:-4px;margin-right:6px"')}Programar fecha</button>
     <section class="card stack">
       <div><h2>Sorteo</h2><p class="muted small" style="margin:4px 0 0">La app elige entre las disciplinas que todavía no jugaron${pend.length ? ` (quedan ${pend.length})` : ""}.</p></div>
